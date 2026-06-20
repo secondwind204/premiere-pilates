@@ -1,170 +1,93 @@
-"use client"
-
-import { useEffect, useRef, useState } from "react"
-import { ArrowDown } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight, Phone, Star } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { primaryCtaClass } from "@/lib/cta-styles"
+import { site } from "@/lib/content/site"
 
 export function Hero() {
-  const contentRef = useRef<HTMLDivElement>(null)
-  const heroRef = useRef<HTMLElement>(null)
-  const titleRef = useRef<HTMLHeadingElement>(null)
-  const [animationProgress, setAnimationProgress] = useState(0)
-  const [animationComplete, setAnimationComplete] = useState(false)
-  const accumulatedScrollRef = useRef(0)
-  const touchStartY = useRef<number>(0)
-  const lastTouchY = useRef<number>(0)
-
-  useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      const atTopOfPage = window.scrollY === 0
-
-      if (atTopOfPage && !animationComplete) {
-        e.preventDefault()
-
-        accumulatedScrollRef.current = Math.max(0, Math.min(700, accumulatedScrollRef.current + e.deltaY))
-
-        const newProgress = Math.max(0, Math.min(1, accumulatedScrollRef.current / 700))
-        setAnimationProgress(newProgress)
-
-        if (newProgress >= 1) {
-          setAnimationComplete(true)
-        }
-
-        if (contentRef.current) {
-          const translateY = newProgress * 200
-          const rotationX = newProgress * 45
-          const scale = 1 - newProgress * 0.3
-          contentRef.current.style.transform = `translateY(${translateY}px) rotateX(${rotationX}deg) scale(${scale})`
-        }
-      } else if (atTopOfPage && animationComplete && e.deltaY < 0) {
-        e.preventDefault()
-
-        accumulatedScrollRef.current = Math.max(0, Math.min(700, accumulatedScrollRef.current + e.deltaY))
-
-        const newProgress = Math.max(0, Math.min(1, accumulatedScrollRef.current / 700))
-        setAnimationProgress(newProgress)
-
-        if (newProgress < 1) {
-          setAnimationComplete(false)
-        }
-
-        if (contentRef.current) {
-          const translateY = newProgress * 200
-          const rotationX = newProgress * 45
-          const scale = 1 - newProgress * 0.3
-          contentRef.current.style.transform = `translateY(${translateY}px) rotateX(${rotationX}deg) scale(${scale})`
-        }
-      }
-    }
-
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartY.current = e.touches[0].clientY
-      lastTouchY.current = e.touches[0].clientY
-    }
-
-    const handleTouchMove = (e: TouchEvent) => {
-      const atTopOfPage = window.scrollY === 0
-      const currentTouchY = e.touches[0].clientY
-      const deltaY = lastTouchY.current - currentTouchY
-
-      if (atTopOfPage && !animationComplete) {
-        e.preventDefault()
-
-        accumulatedScrollRef.current = Math.max(0, Math.min(700, accumulatedScrollRef.current + deltaY * 3))
-
-        const newProgress = Math.max(0, Math.min(1, accumulatedScrollRef.current / 700))
-        setAnimationProgress(newProgress)
-
-        if (newProgress >= 1) {
-          setAnimationComplete(true)
-        }
-
-        if (contentRef.current) {
-          const translateY = newProgress * 200
-          const rotationX = newProgress * 45
-          const scale = 1 - newProgress * 0.3
-          contentRef.current.style.transform = `translateY(${translateY}px) rotateX(${rotationX}deg) scale(${scale})`
-        }
-      } else if (atTopOfPage && animationComplete && deltaY < 0) {
-        e.preventDefault()
-
-        accumulatedScrollRef.current = Math.max(0, Math.min(700, accumulatedScrollRef.current + deltaY * 3))
-
-        const newProgress = Math.max(0, Math.min(1, accumulatedScrollRef.current / 700))
-        setAnimationProgress(newProgress)
-
-        if (newProgress < 1) {
-          setAnimationComplete(false)
-        }
-
-        if (contentRef.current) {
-          const translateY = newProgress * 200
-          const rotationX = newProgress * 45
-          const scale = 1 - newProgress * 0.3
-          contentRef.current.style.transform = `translateY(${translateY}px) rotateX(${rotationX}deg) scale(${scale})`
-        }
-      }
-
-      lastTouchY.current = currentTouchY
-    }
-
-    window.addEventListener("wheel", handleWheel, { passive: false })
-    window.addEventListener("touchstart", handleTouchStart, { passive: false })
-    window.addEventListener("touchmove", handleTouchMove, { passive: false })
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel)
-      window.removeEventListener("touchstart", handleTouchStart)
-      window.removeEventListener("touchmove", handleTouchMove)
-    }
-  }, [animationComplete])
-
   return (
-    <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hously-background.png"
-          alt="Minimalist architectural interior"
-          className="w-full h-full object-cover object-center"
-        />
-      </div>
+    <section
+      id="hero"
+      className="relative overflow-hidden bg-gradient-to-br from-secondary/50 via-background to-secondary/30"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(0.95_0.04_305)_0%,_transparent_55%)] pointer-events-none" />
 
-      <div
-        ref={contentRef}
-        className="container mx-auto px-6 md:px-12 lg:pt-0 relative z-10 pb-0 pl-1 pr-1 pt-8 md:pt-0"
-        style={{
-          willChange: "transform",
-          transform: "translateY(0px)",
-          perspective: "1000px",
-          transformStyle: "preserve-3d",
-        }}
-      >
-        <div className="mb-72 md:mb-60 lg:mb-80">
-          <p className="text-sm tracking-[0.3em] uppercase text-center text-secondary mb-0">{"Architecture Studio"}</p>
+      <div className="container mx-auto px-6 md:px-12 pt-28 pb-16 md:pt-32 md:pb-24 lg:pt-36 lg:pb-28">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left — copy & CTA */}
+          <div className="order-1 lg:order-1 min-w-0 relative z-10">
+            <p className="text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase text-muted-foreground mb-4 text-balance">
+              Serving St. Augustine & St. Johns County, Florida
+            </p>
 
-          <h1
-            ref={titleRef}
-            className="text-7xl font-medium text-balance text-center text-white mb-0 tracking-tight leading-[0.9] lg:text-8xl"
-          >
-            {"We design spaces"}
-            <br />
-            <span className="text-orange-200">{"that elevate living"}</span>
-          </h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-medium text-foreground mb-6 tracking-tight leading-[1.1] text-balance">
+              One-on-One Physical Therapy & Pilates Rehabilitation
+            </h1>
+
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed text-balance">
+              Private Sessions • Personalized Treatment • Long-Term Relief
+            </p>
+
+            <div className="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-2 mb-10 text-xs sm:text-sm">
+              <div className="flex items-center gap-1.5 min-w-0">
+                <div className="flex shrink-0">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-primary text-primary" />
+                  ))}
+                </div>
+                <span className="font-medium text-foreground/80">
+                  {site.googleReviews.ratingDisplay} Stars ({site.googleReviews.count} Google Reviews)
+                </span>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-foreground/80">
+                <span className="font-medium">25+ Years</span>
+                <span className="text-muted-foreground/50" aria-hidden="true">
+                  ·
+                </span>
+                <span className="font-medium">PT + Pilates Specialist</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href={site.scheduleUrl} className={cn(primaryCtaClass, "w-full sm:w-auto")}>
+                Schedule Evaluation
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <a
+                href={site.phoneHref}
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-border bg-card text-foreground px-8 py-4 text-sm font-medium tracking-wide hover:bg-secondary/60 transition-colors rounded-xl"
+              >
+                <Phone className="w-4 h-4" />
+                Call {site.phone}
+              </a>
+            </div>
+          </div>
+
+          {/* Right — rounded image card */}
+          <div className="order-2 lg:order-2 w-full min-w-0 flex justify-center lg:justify-end relative z-0 mt-8 lg:mt-0">
+            <div className="relative mx-auto w-full max-w-[min(100%,340px)] sm:max-w-[420px] lg:max-w-[500px] lg:mx-0 lg:-translate-x-5">
+              <div
+                className="pointer-events-none absolute inset-0 -z-10 hidden lg:block rounded-3xl bg-primary/20 blur-3xl scale-110"
+                aria-hidden="true"
+              />
+              <div className="relative rounded-3xl p-1 bg-gradient-to-br from-primary/50 via-primary/20 to-primary/5 shadow-[0_16px_48px_-12px_rgba(80,50,120,0.28)] lg:shadow-[0_24px_64px_-16px_rgba(80,50,120,0.35)]">
+                <div className="rounded-[1.35rem] overflow-hidden ring-[5px] ring-white relative aspect-[6/5]">
+                  <Image
+                    src="/images/unnamed%20(1).webp"
+                    alt="Nicole Tristram providing one-on-one physical therapy with a patient in her St. Augustine studio"
+                    fill
+                    priority
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 420px, 500px"
+                    className="object-cover object-[62%_22%]"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="absolute inset-0 z-20 pointer-events-none">
-        <img
-          src="/images/hously-foreground.png"
-          alt="Marble kitchen island detail"
-          className="w-full h-full object-cover object-center"
-        />
-      </div>
-
-      {animationComplete && (
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce z-30">
-          <ArrowDown className="w-5 h-5 text-muted-foreground" />
-        </div>
-      )}
     </section>
   )
 }

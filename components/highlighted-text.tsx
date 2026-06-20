@@ -36,7 +36,7 @@ export function HighlightedText({ children }: { children: React.ReactNode }) {
       >
         <path
           d="M0 8 Q50 2, 100 6 T200 8"
-          stroke="rgb(251 146 60)"
+          stroke="oklch(0.58 0.16 305)"
           strokeWidth="2"
           fill="none"
           strokeLinecap="round"
