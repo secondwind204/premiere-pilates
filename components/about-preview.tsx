@@ -8,33 +8,31 @@ export function AboutPreview() {
   return (
     <section className="py-20 md:py-28 bg-secondary/45">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-20 lg:items-center">
-          <div className="order-1 lg:col-start-2 lg:row-start-1">
-            <p className="text-muted-foreground text-sm tracking-[0.25em] uppercase mb-4">About Nicole</p>
-            <h2 className="text-3xl md:text-4xl font-medium tracking-tight mb-2">{aboutNicoleSummary.headline}</h2>
-            <p className="text-primary font-medium">{aboutNicoleSummary.subtitle}</p>
-          </div>
-
-          <div className="order-2 relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl bg-secondary shadow-md lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:mx-0 lg:max-w-none">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,280px)_1fr] lg:gap-16 lg:items-start">
+          <div className="relative mx-auto aspect-[3/4] w-full max-w-[240px] overflow-hidden rounded-2xl bg-secondary shadow-md sm:max-w-[260px] lg:mx-0 lg:max-w-none">
             <Image
               src="/images/nicoleheadshot.jpeg"
               alt="Nicole Tristram, Physical Therapist and Pilates Rehabilitation Practitioner"
               fill
-              sizes="(max-width: 1024px) 384px, 448px"
+              sizes="(max-width: 1024px) 260px, 280px"
               className="object-cover object-top"
             />
           </div>
 
-          <div className="order-3 lg:col-start-2 lg:row-start-2">
+          <div>
+            <p className="text-muted-foreground text-sm tracking-[0.25em] uppercase mb-4">About Nicole</p>
+            <h2 className="text-3xl md:text-4xl font-medium tracking-tight mb-2">{aboutNicoleSummary.headline}</h2>
+            <p className="text-primary font-medium mb-6">{aboutNicoleSummary.subtitle}</p>
+
             {aboutNicoleSummary.paragraphs.map((paragraph, index) => (
-              <p key={index} className="text-muted-foreground text-lg leading-relaxed mb-4">
+              <p key={index} className="text-muted-foreground text-lg leading-relaxed mb-4 last:mb-0">
                 {paragraph}
               </p>
             ))}
 
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 text-sm font-medium mt-4 text-primary hover:text-accent transition-colors group"
+              className="inline-flex items-center gap-2 text-sm font-medium mt-6 text-primary hover:text-accent transition-colors group"
             >
               Read full bio
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
