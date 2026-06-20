@@ -29,7 +29,7 @@ export function Hero() {
               Private Sessions • Personalized Treatment • Long-Term Relief
             </p>
 
-            <div className="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-2 mb-10 text-xs sm:text-sm">
+            <div className="flex flex-wrap items-center gap-x-2.5 sm:gap-x-3 gap-y-2 mb-10 text-xs sm:text-sm">
               <div className="flex items-center gap-1.5 min-w-0">
                 <div className="flex shrink-0">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -41,13 +41,17 @@ export function Hero() {
                 </span>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-foreground/80">
-                <span className="font-medium">25+ Years</span>
-                <span className="text-muted-foreground/50" aria-hidden="true">
-                  ·
-                </span>
-                <span className="font-medium">PT + Pilates Specialist</span>
-              </div>
+              <span className="text-muted-foreground/50" aria-hidden="true">
+                ·
+              </span>
+
+              <span className="font-medium text-foreground/80">25+ Years</span>
+
+              <span className="text-muted-foreground/50" aria-hidden="true">
+                ·
+              </span>
+
+              <span className="font-medium text-foreground/80">PT + Pilates Specialist</span>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
