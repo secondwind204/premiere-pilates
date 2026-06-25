@@ -18,7 +18,7 @@ import { site } from "@/lib/content/site"
 export const metadata: Metadata = createMetadata({
   title: "Patient Forms",
   description:
-    "Download patient intake forms, medical history questionnaires, and functional scales for Premiere Pilates Rehabilitation & Fitness in St. Augustine, FL.",
+    "Download patient intake forms, medical history questionnaires, and functional scales for Premiere Pilates Rehabilitation and Fitness in St. Augustine, FL.",
   path: "/get-started/forms",
 })
 

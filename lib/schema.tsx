@@ -1,4 +1,5 @@
 import { homepageTestimonials } from "@/lib/content/homepage"
+import { services } from "@/lib/content/services"
 import { site } from "@/lib/content/site"
 import { absoluteUrl } from "@/lib/seo"
 
@@ -74,6 +75,15 @@ export function localBusinessSchema() {
     founder: { "@id": PERSON_ID },
     employee: { "@id": PERSON_ID },
     knowsAbout: site.knowsAbout,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `${site.name} Services`,
+      itemListElement: services.map((service) => ({
+        "@type": "Offer",
+        name: service.title,
+        url: absoluteUrl(`/services/${service.slug}`),
+      })),
+    },
     paymentAccepted: "Cash, Check, Credit Card, Medicare",
     currenciesAccepted: "USD",
     medicalSpecialty: "PhysicalTherapy",
@@ -212,7 +222,7 @@ export function offerCatalogSchema(
 ) {
   return {
     "@type": "OfferCatalog",
-    name: "Premiere Pilates Services",
+    name: `${site.name} Services`,
     itemListElement: offers.map((offer) => ({
       "@type": "Offer",
       name: offer.name,

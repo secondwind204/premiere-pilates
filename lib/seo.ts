@@ -1,6 +1,27 @@
 import type { Metadata } from "next"
 import { site } from "@/lib/content/site"
 
+export const localGeoKeywords = [
+  "St Augustine FL",
+  "St Johns County FL",
+  "Ponte Vedra FL",
+  "Jacksonville FL",
+  "Northeast Florida",
+] as const
+
+export const serviceSeoKeywords: Record<string, string[]> = {
+  "post-surgical-rehabilitation": ["post-surgical physical therapy", "knee replacement rehab", "hip replacement rehab"],
+  "hip-back-pain": ["hip pain physical therapy", "back pain physical therapy", "sciatica treatment"],
+  "womens-health": ["women's health physical therapy", "postpartum rehabilitation", "mastectomy recovery PT"],
+  "knee-rehabilitation": ["knee pain physical therapy", "ACL rehabilitation"],
+  "shoulder-injury": ["shoulder pain physical therapy", "rotator cuff rehabilitation", "frozen shoulder treatment"],
+  "sports-injury": ["sports injury physical therapy", "return to sport rehabilitation"],
+  "chronic-pain": ["chronic pain physical therapy", "pain management physical therapy"],
+  "foot-ankle": ["plantar fasciitis treatment", "ankle sprain rehabilitation", "foot and ankle physical therapy"],
+  oov: ["Oov rehabilitation", "Oov physical therapy", "Polestar Pilates rehabilitation"],
+  konnector: ["Konnector Pilates", "Konnector Reformer training", "proprioception rehabilitation"],
+}
+
 type CreateMetadataOptions = {
   title: string
   description: string

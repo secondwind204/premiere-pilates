@@ -22,6 +22,8 @@ export type ServicePage = {
   testimonials: Testimonial[]
   faqs: FaqItem[]
   ctaText: string
+  whatWeTreatLabel?: string
+  whatWeTreatHeading?: string
 }
 
 export const services: ServicePage[] = [
@@ -62,7 +64,8 @@ export const services: ServicePage[] = [
         phase: "Weeks 1–2",
         title: "Pain & swelling management",
         items: [
-          "Alpha-Stem to reduce inflammation",
+          "Manual therapy techniques",
+          "Alpha-Stim to reduce inflammation",
           "Gentle range-of-motion work",
           "Scar tissue mobilization",
           "Lymphatic drainage techniques",
@@ -92,8 +95,9 @@ export const services: ServicePage[] = [
     differentiators: [
       "Private, one-on-one sessions — Nicole's full attention for the full hour.",
       "Whole-body assessment to find the true root cause, not just the painful area.",
-      "Alpha-Stem technology to reduce pain and inflammation without medication.",
-      "Therapeutic Pilates for core stability and neuromuscular control.",
+      "Manual therapy techniques integrated with therapeutic movement.",
+      "Modalities: Alpha-Stim and Dolphin Neurostim for pain and inflammation.",
+      "Therapeutic Pilates on Reformer, Cadillac, Chair, Oov, and Konnector.",
       "25+ years of experience with complex and post-surgical cases.",
     ],
     testimonials: [
@@ -183,7 +187,7 @@ export const services: ServicePage[] = [
         items: [
           "Manual therapy and soft-tissue mobilization",
           "Trigger point release",
-          "Alpha-Stem for pain and inflammation",
+          "Alpha-Stim for pain and inflammation",
           "Therapeutic Pilates for core stability",
           "Movement retraining and postural correction",
         ],
@@ -192,8 +196,9 @@ export const services: ServicePage[] = [
     differentiators: [
       "Private, one-on-one sessions — Nicole's full attention for the full hour.",
       "Whole-body assessment to find the true root cause, not just the painful area.",
-      "Alpha-Stem technology to reduce pain and inflammation without medication.",
-      "Therapeutic Pilates for core stability and neuromuscular control.",
+      "Manual therapy techniques integrated with therapeutic movement.",
+      "Modalities: Alpha-Stim and Dolphin Neurostim for pain and inflammation.",
+      "Therapeutic Pilates on Reformer, Cadillac, Chair, Oov, and Konnector.",
       "25+ years of experience with complex and post-surgical cases.",
     ],
     testimonials: [
@@ -281,8 +286,9 @@ export const services: ServicePage[] = [
     differentiators: [
       "Private, one-on-one sessions — Nicole's full attention for the full hour.",
       "Whole-body assessment to find the true root cause, not just the painful area.",
-      "Alpha-Stem technology to reduce pain and inflammation without medication.",
-      "Therapeutic Pilates for core stability and neuromuscular control.",
+      "Manual therapy techniques integrated with therapeutic movement.",
+      "Modalities: Alpha-Stim and Dolphin Neurostim for pain and inflammation.",
+      "Therapeutic Pilates on Reformer, Cadillac, Chair, Oov, and Konnector.",
       "25+ years of experience with complex and post-surgical cases.",
     ],
     testimonials: [
@@ -348,8 +354,9 @@ export const services: ServicePage[] = [
     differentiators: [
       "Private, one-on-one sessions — Nicole's full attention for the full hour.",
       "Whole-body assessment to find the true root cause, not just the painful area.",
-      "Alpha-Stem technology to reduce pain and inflammation without medication.",
-      "Therapeutic Pilates for core stability and neuromuscular control.",
+      "Manual therapy techniques integrated with therapeutic movement.",
+      "Modalities: Alpha-Stim and Dolphin Neurostim for pain and inflammation.",
+      "Therapeutic Pilates on Reformer, Cadillac, Chair, Oov, and Konnector.",
       "25+ years of experience with complex and post-surgical cases.",
     ],
     testimonials: [
@@ -415,8 +422,9 @@ export const services: ServicePage[] = [
     differentiators: [
       "Private, one-on-one sessions — Nicole's full attention for the full hour.",
       "Whole-body assessment to find the true root cause, not just the painful area.",
-      "Alpha-Stem technology to reduce pain and inflammation without medication.",
-      "Therapeutic Pilates for core stability and neuromuscular control.",
+      "Manual therapy techniques integrated with therapeutic movement.",
+      "Modalities: Alpha-Stim and Dolphin Neurostim for pain and inflammation.",
+      "Therapeutic Pilates on Reformer, Cadillac, Chair, Oov, and Konnector.",
       "25+ years of experience with complex and post-surgical cases.",
     ],
     testimonials: [
@@ -451,7 +459,7 @@ export const services: ServicePage[] = [
       },
       {
         question: "Will treatment hurt?",
-        answer: "We work within your tolerance; Alpha-Stem helps manage pain and inflammation.",
+        answer: "We work within your tolerance; Alpha-Stim helps manage pain and inflammation.",
       },
     ],
     ctaText:
@@ -482,8 +490,9 @@ export const services: ServicePage[] = [
     differentiators: [
       "Private, one-on-one sessions — Nicole's full attention for the full hour.",
       "Whole-body assessment to find the true root cause, not just the painful area.",
-      "Alpha-Stem technology to reduce pain and inflammation without medication.",
-      "Therapeutic Pilates for core stability and neuromuscular control.",
+      "Manual therapy techniques integrated with therapeutic movement.",
+      "Modalities: Alpha-Stim and Dolphin Neurostim for pain and inflammation.",
+      "Therapeutic Pilates on Reformer, Cadillac, Chair, Oov, and Konnector.",
       "25+ years of experience with complex and post-surgical cases.",
     ],
     testimonials: [
@@ -550,8 +559,9 @@ export const services: ServicePage[] = [
     differentiators: [
       "Private, one-on-one sessions — Nicole's full attention for the full hour.",
       "Whole-body assessment to find the true root cause, not just the painful area.",
-      "Alpha-Stem technology to reduce pain and inflammation without medication.",
-      "Therapeutic Pilates for core stability and neuromuscular control.",
+      "Manual therapy techniques integrated with therapeutic movement.",
+      "Modalities: Alpha-Stim and Dolphin Neurostim for pain and inflammation.",
+      "Therapeutic Pilates on Reformer, Cadillac, Chair, Oov, and Konnector.",
       "25+ years of experience with complex and post-surgical cases.",
     ],
     testimonials: [
@@ -590,6 +600,314 @@ export const services: ServicePage[] = [
     ],
     ctaText:
       "Schedule your chronic pain evaluation. Nicole will map what's really driving your pain and build a plan to restore comfort and function.",
+  },
+  {
+    slug: "foot-ankle",
+    title: "Foot & Ankle Physical Therapy in St. Augustine",
+    metaDescription:
+      "Foot and ankle physical therapy in St. Augustine for plantar fasciitis, ankle sprains, Achilles tendinopathy, and heel pain. Private one-on-one rehab with Nicole Tristram, PT.",
+    headline: "Foot & Ankle Physical Therapy in St. Augustine",
+    subheadline:
+      "Plantar fasciitis, ankle sprains, or persistent heel pain limiting every step? Get targeted rehabilitation that addresses how your foot, ankle, and entire lower chain move together.",
+    whyItMatters:
+      "Foot and ankle pain rarely stays isolated. Stiff ankles change your gait, overloaded arches strain the plantar fascia, and compensations travel up to the knee, hip, and back. Generic foot exercises miss the movement patterns keeping you stuck. Nicole evaluates your whole lower-body chain — mobility, strength, balance, and footwear mechanics — to treat the source of your symptoms, not just where it hurts.",
+    whatWeTreat: [
+      {
+        category: "Common foot conditions",
+        items: [
+          "Plantar fasciitis",
+          "Heel pain & heel spurs",
+          "Metatarsalgia",
+          "Flat feet & overpronation",
+          "Morton's neuroma",
+        ],
+      },
+      {
+        category: "Ankle & lower leg",
+        items: [
+          "Ankle sprains (acute & chronic)",
+          "Achilles tendinopathy",
+          "Peroneal tendon irritation",
+          "Ankle instability",
+          "Calf tightness & shin splints",
+        ],
+      },
+      {
+        category: "Recovery & prevention",
+        items: [
+          "Post-fracture rehabilitation",
+          "Post-surgical foot & ankle rehab",
+          "Balance & proprioception retraining",
+          "Return to walking, running & sport",
+        ],
+      },
+    ],
+    approach: [
+      {
+        title: "Assessment",
+        items: [
+          "Gait and weight-bearing analysis",
+          "Ankle mobility and strength testing",
+          "Foot posture and arch mechanics",
+          "Whole-body movement screening",
+        ],
+      },
+      {
+        title: "Treatment",
+        items: [
+          "Manual therapy techniques",
+          "Modalities: Alpha-Stim and Dolphin Neurostim",
+          "Therapeutic exercise and Pilates-based foot/ankle work",
+          "Balance and proprioception training on Reformer and Oov",
+        ],
+      },
+    ],
+    differentiators: [
+      "Private, one-on-one sessions — Nicole's full attention for the full hour.",
+      "Whole-body assessment to find the true root cause, not just the painful area.",
+      "Manual therapy techniques integrated with therapeutic movement.",
+      "Modalities: Alpha-Stim and Dolphin Neurostim for pain and inflammation.",
+      "Therapeutic Pilates on Reformer, Cadillac, Chair, Oov, and Konnector.",
+      "25+ years of experience with complex and post-surgical cases.",
+    ],
+    testimonials: [
+      {
+        quote: "My hips and back are feeling much better. She is extremely knowledgeable and very thorough.",
+        author: "Maci R.",
+      },
+      {
+        quote: "Nicole's ability to quickly and accurately diagnose movement issues is unmatched.",
+        author: "Chris B.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How long does plantar fasciitis take to improve with PT?",
+        answer:
+          "Many patients notice relief within a few sessions as pain and mechanics improve; full recovery depends on how long symptoms have been present and daily load on your feet.",
+      },
+      {
+        question: "Should I still walk or exercise with an ankle sprain?",
+        answer:
+          "Nicole will guide safe loading based on your injury stage — protecting the tissue early, then progressively restoring strength and balance.",
+      },
+      {
+        question: "Do I need custom orthotics?",
+        answer:
+          "Not always. Nicole assesses whether foot mechanics, strength, or footwear changes are enough before recommending orthotics.",
+      },
+      {
+        question: "Do I need a referral?",
+        answer: "No — Florida is direct-access.",
+      },
+    ],
+    ctaText:
+      "Schedule your foot and ankle evaluation. Nicole will assess your movement, identify what's driving your pain, and build a plan to get you walking comfortably again.",
+  },
+  {
+    slug: "oov",
+    title: "Oov® Rehabilitation in St. Augustine",
+    metaDescription:
+      "Oov® rehabilitation at Premiere Pilates in St. Augustine. Nicole Tristram, PT uses the Oov for core control, spinal alignment, and mindful movement training in private PT sessions.",
+    headline: "Oov® Rehabilitation in St. Augustine",
+    subheadline:
+      "Train core stability, spinal alignment, and controlled movement on the Oov — a dynamic tool Nicole integrates into one-on-one physical therapy and Pilates rehabilitation.",
+    whyItMatters:
+      "Functional recovery depends on the balance between strength and motor control — the ability to stabilize one part of your body while another moves. The Oov creates a three-dimensional, unstable surface that challenges your trunk, pelvis, and breath simultaneously. Because it supports the natural curves of the spine while keeping the pelvis free to move, it is especially effective for retraining core control after injury, surgery, or chronic pain.",
+    whatWeTreatLabel: "How We Use the Oov",
+    whatWeTreatHeading: "Applications in rehabilitation",
+    whatWeTreat: [
+      {
+        category: "Core & spinal control",
+        items: [
+          "Trunk stability and deep core activation",
+          "Spinal alignment and axial elongation",
+          "Pelvic control in all three planes of motion",
+          "Diaphragmatic breathing integration",
+        ],
+      },
+      {
+        category: "Movement retraining",
+        items: [
+          "Isolating movement — training one region without compensating elsewhere",
+          "Balance and proprioceptive challenge",
+          "Low-impact strengthening after injury or surgery",
+          "Correcting faulty movement patterns",
+        ],
+      },
+      {
+        category: "Conditions that benefit",
+        items: [
+          "Low back and hip pain",
+          "Post-surgical core retraining",
+          "Chronic pain and deconditioning",
+          "Neck, shoulder, and postural dysfunction",
+        ],
+      },
+    ],
+    approach: [
+      {
+        title: "Why the Oov works",
+        items: [
+          "Mimics spinal movement while supporting all three curves of the spine",
+          "Elevates the pelvis off the ground for unrestricted three-plane motion",
+          "Head-lower-than-hips positioning encourages calm, diaphragmatic breathing",
+          "Proprietary foam provides controlled instability — soft until it pushes back",
+        ],
+      },
+      {
+        title: "In your session",
+        items: [
+          "Integrated into your existing PT or Pilates rehabilitation plan",
+          "Progressions matched to your tolerance and stage of recovery",
+          "Combined with manual therapy and studio equipment as needed",
+          "One-on-one coaching for precise, mindful movement",
+        ],
+      },
+    ],
+    differentiators: [
+      "Private, one-on-one sessions — Nicole's full attention for the full hour.",
+      "Polestar Pilates certified practitioner with 25+ years of clinical experience.",
+      "Oov integrated with manual therapy, Alpha-Stim, and Dolphin Neurostim.",
+      "Full Pilates studio: Reformer, Cadillac, Chair, Oov, and Konnector.",
+      "Whole-body assessment — not a standalone gadget session.",
+    ],
+    testimonials: [
+      {
+        quote: "I can move freely inside myself now. Nicole guided my body back into proper alignment from head to toe.",
+        author: "Bee S.",
+      },
+      {
+        quote: "She takes time to identify the root cause and create an individualized plan.",
+        author: "K Rox",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the Oov?",
+        answer:
+          "The Oov is a curved, dynamic foam device designed to challenge core stability, spinal alignment, and controlled movement in three dimensions — used within Nicole's clinical rehabilitation sessions.",
+      },
+      {
+        question: "Is Oov training appropriate after surgery?",
+        answer:
+          "Yes, when cleared by your surgeon and progressed appropriately. Nicole adapts Oov work to your stage of recovery.",
+      },
+      {
+        question: "Do I need Pilates experience to use the Oov?",
+        answer: "No. Nicole guides every movement based on your ability and goals.",
+      },
+      {
+        question: "Is this a separate class or part of PT?",
+        answer:
+          "The Oov is integrated into your private physical therapy or Pilates rehabilitation session — not a group class.",
+      },
+    ],
+    ctaText:
+      "Schedule an evaluation to learn how Oov-based training can support your recovery. Nicole will assess whether it's the right tool for your body and your goals.",
+  },
+  {
+    slug: "konnector",
+    title: "Konnector Pilates in St. Augustine",
+    metaDescription:
+      "Konnector Pilates training at Premiere Pilates in St. Augustine. Enhance proprioception, functional movement, and full-body integration on the Reformer with Nicole Tristram, PT.",
+    headline: "Konnector Pilates in St. Augustine",
+    subheadline:
+      "Experience whole-body integration on the Reformer with the Konnector — a system that connects all four limbs to train the neuromyofascial chains your body uses in real movement.",
+    whyItMatters:
+      "Proprioception — your sense of where your body is in space — is essential for balance, coordination, and correcting asymmetries. The Konnector links all four limbs through a single rope system on the Reformer, so movement in one limb is felt throughout the body. This mirrors the fascial connections between upper and lower body, right and left sides, and opposite arm and leg — the same patterns used in walking, reaching, and athletic movement.",
+    whatWeTreatLabel: "Why Konnector",
+    whatWeTreatHeading: "What it trains",
+    whatWeTreat: [
+      {
+        category: "Proprioception & awareness",
+        items: [
+          "Enhanced body-position sense during movement",
+          "Identifying imbalances and asymmetries",
+          "Improved coordination between limbs and trunk",
+          "Feedback-rich environment for motor learning",
+        ],
+      },
+      {
+        category: "Functional integration",
+        items: [
+          "Reciprocal arm-and-leg movement patterns",
+          "Rotation and cross-body coordination",
+          "True four-limb integration on the Reformer",
+          "Movement patterns that translate to daily life",
+        ],
+      },
+      {
+        category: "Who benefits",
+        items: [
+          "Post-injury movement retraining",
+          "Athletes returning to sport",
+          "Chronic pain and compensatory patterns",
+          "Clients advancing beyond basic Reformer work",
+        ],
+      },
+    ],
+    approach: [
+      {
+        title: "The science behind it",
+        items: [
+          "All four limbs remain connected yet move independently",
+          "Stimulates neuromyofascial chains across the body",
+          "Replicates functional connections between opposite arm and leg",
+          "Expands Reformer training for efficient pattern correction",
+        ],
+      },
+      {
+        title: "In your session",
+        items: [
+          "Konnector work tailored to your rehabilitation goals",
+          "Combined with manual therapy and other Pilates equipment",
+          "Progressions from supported to more challenging patterns",
+          "Private coaching for safe, precise movement",
+        ],
+      },
+    ],
+    differentiators: [
+      "Private, one-on-one sessions — Nicole's full attention for the full hour.",
+      "Konnector integrated with full clinical assessment and manual therapy.",
+      "Polestar Pilates certified practitioner with 25+ years of experience.",
+      "Complete studio: Reformer, Cadillac, Chair, Oov, and Konnector.",
+      "Functional movement focus — not just exercise for exercise's sake.",
+    ],
+    testimonials: [
+      {
+        quote:
+          "Nicole's ability to quickly and accurately diagnose movement issues is unmatched. She identifies the root cause, explains it clearly, and creates a plan.",
+        author: "Chris B.",
+      },
+      {
+        quote: "Incredible results — I'm shocked after every treatment.",
+        author: "Elaine K.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the Konnector?",
+        answer:
+          "The Konnector is a Reformer attachment that connects all four limbs through one rope system, providing rich proprioceptive feedback and training whole-body movement integration.",
+      },
+      {
+        question: "How is Konnector different from regular Reformer work?",
+        answer:
+          "Standard Reformer exercises often isolate limbs. Konnector keeps all four connected, making it easier to feel and correct how movement in one area affects the rest of your body.",
+      },
+      {
+        question: "Is Konnector appropriate during injury recovery?",
+        answer:
+          "Yes, when progressed appropriately. Nicole selects Konnector patterns based on your condition, tolerance, and stage of healing.",
+      },
+      {
+        question: "Do I need prior Pilates experience?",
+        answer: "No. Nicole introduces Konnector work at a level matched to your ability.",
+      },
+    ],
+    ctaText:
+      "Schedule an evaluation to experience Konnector training as part of your personalized rehabilitation plan.",
   },
 ]
 
@@ -630,9 +948,15 @@ export const conditionCards = [
   },
   {
     title: "Sports Injury",
-    conditions: ["Ankle sprains", "Muscle strains", "Overuse injuries", "Return-to-sport"],
+    conditions: ["Muscle strains", "Overuse injuries", "Return-to-sport", "Tendon injuries"],
     href: "/services/sports-injury",
     icon: "traumatism",
+  },
+  {
+    title: "Foot & Ankle",
+    conditions: ["Plantar fasciitis", "Ankle sprains", "Achilles pain", "Heel pain"],
+    href: "/services/foot-ankle",
+    icon: "foot",
   },
   {
     title: "Chronic Pain Management",

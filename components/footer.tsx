@@ -12,8 +12,10 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6">
               <span className="block font-medium tracking-tight">
-                <span className="text-sm uppercase tracking-[0.15em] text-muted-foreground">Premiere</span>
-                <span className="block text-xl text-foreground">Pilates</span>
+                <span className="text-sm uppercase tracking-[0.15em] text-muted-foreground">{site.brandLine1}</span>
+                <span className="block text-sm uppercase tracking-[0.12em] text-muted-foreground/80 mt-0.5">
+                  {site.brandLine2}
+                </span>
               </span>
             </Link>
             <p className="text-muted-foreground leading-relaxed max-w-md mb-4">{site.description}</p>

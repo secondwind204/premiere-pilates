@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowRight, Check, MapPin, Phone } from "lucide-react"
 import type { LocationPage } from "@/lib/content/locations"
+import { practiceFacts } from "@/lib/content/geo-facts"
 import { conditionCards } from "@/lib/content/services"
 import { site } from "@/lib/content/site"
 import { primaryCtaClass, primaryCtaInvertedClass } from "@/lib/cta-styles"
@@ -98,6 +99,48 @@ export function LocationPageLayout({ location }: { location: LocationPage }) {
                   ))}
                 </ul>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 md:py-24 bg-secondary/30">
+          <div className="container mx-auto px-6 md:px-12">
+            <p className="text-muted-foreground text-sm tracking-[0.25em] uppercase mb-4">Services & Modalities</p>
+            <h2 className="text-2xl md:text-3xl font-medium mb-6">What Nicole offers in {location.name}</h2>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl">
+              <div>
+                <h3 className="text-lg font-medium mb-3">Treatment modalities</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  {practiceFacts.modalities.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="text-primary/60 shrink-0">•</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-lg font-medium mb-3">Pilates studio equipment</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  {practiceFacts.pilatesEquipment.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="text-primary/60 shrink-0">•</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-4 mt-8">
+              {practiceFacts.specialtyPages.map((page) => (
+                <Link
+                  key={page.href}
+                  href={page.href}
+                  className="text-sm font-medium text-primary hover:underline underline-offset-4"
+                >
+                  {page.name} →
+                </Link>
+              ))}
             </div>
           </div>
         </section>

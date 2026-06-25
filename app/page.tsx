@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { ProblemSolution } from "@/components/problem-solution"
 import { Conditions } from "@/components/conditions"
+import { PilatesRehabilitation } from "@/components/pilates-rehabilitation"
 import { AboutPreview, SocialProof } from "@/components/about-preview"
 import { AreasServed } from "@/components/areas-served"
 import { TestimonialsSection } from "@/components/testimonials-section"
@@ -23,17 +24,22 @@ import { site } from "@/lib/content/site"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = createMetadata({
-  title: "Premiere Pilates | One-on-One Physical Therapy & Pilates in St. Augustine, FL",
+  title: "Premiere Pilates Rehabilitation and Fitness | One-on-One Physical Therapy & Pilates in St. Augustine, FL",
   description: site.description,
   path: "/",
   absoluteTitle: true,
   keywords: [
     "physical therapy St Augustine",
-    "Pilates St Augustine",
-    "private physical therapist",
+    "Pilates rehabilitation St Augustine",
+    "private physical therapist St Augustine",
     "Nicole Tristram PT",
-    "post-surgical rehabilitation",
-    "chronic pain physical therapy",
+    "post-surgical rehabilitation St Augustine",
+    "foot and ankle physical therapy",
+    "plantar fasciitis treatment St Augustine",
+    "Oov rehabilitation",
+    "Konnector Pilates",
+    "Alpha-Stim physical therapy",
+    "manual therapy St Augustine",
     "women's health physical therapy",
   ],
 })
@@ -55,6 +61,7 @@ export default function Home() {
         <Hero />
         <ProblemSolution />
         <Conditions />
+        <PilatesRehabilitation />
         <SocialProof />
         <TestimonialsSection testimonials={homepageTestimonials} featured />
         <AboutPreview />

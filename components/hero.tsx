@@ -51,7 +51,7 @@ export function Hero() {
                 ·
               </span>
 
-              <span className="font-medium text-foreground/80">PT + Pilates Specialist</span>
+              <span className="font-medium text-foreground/80">PT + Pilates Rehabilitation Practitioner</span>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">

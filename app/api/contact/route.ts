@@ -48,7 +48,7 @@ export async function POST(request: Request) {
   const resend = new Resend(apiKey)
   const to = process.env.CONTACT_TO_EMAIL ?? site.contactFormEmail
   const from =
-    process.env.RESEND_FROM_EMAIL ?? `Premiere Pilates <contact@${new URL(site.url).hostname}>`
+    process.env.RESEND_FROM_EMAIL ?? `${site.name} <contact@${new URL(site.url).hostname}>`
 
   const emailSubject = subject?.trim()
     ? `[Website] ${subject.trim()}`

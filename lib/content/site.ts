@@ -1,9 +1,11 @@
 export const site = {
-  name: "Premiere Pilates Rehabilitation & Fitness",
-  shortName: "Premiere Pilates",
+  name: "Premiere Pilates Rehabilitation and Fitness",
+  shortName: "Premiere Pilates Rehabilitation and Fitness",
+  brandLine1: "Premiere Pilates",
+  brandLine2: "Rehabilitation and Fitness",
   tagline: "One-on-One Physical Therapy & Pilates Rehabilitation",
   description:
-    "Private, one-on-one physical therapy and Pilates rehabilitation in St. Augustine, FL. Nicole Tristram, PT brings 25+ years of experience treating post-surgical recovery, chronic pain, sports injuries, and women's health conditions using a whole-body approach.",
+    "Private, one-on-one physical therapy and Pilates rehabilitation in St. Augustine, FL. Nicole Tristram, PT offers manual therapy, Alpha-Stim, Dolphin Neurostim, and studio equipment including Reformer, Oov, and Konnector for post-surgical recovery, foot and ankle pain, chronic pain, sports injuries, and women's health.",
   url: "https://premierepilates.org",
   locale: "en_US",
   phone: "(904) 315-0667",
@@ -42,6 +44,9 @@ export const site = {
   knowsAbout: [
     "Physical Therapy",
     "Pilates Rehabilitation",
+    "Manual Therapy",
+    "Alpha-Stim",
+    "Dolphin Neurostim",
     "Post-Surgical Rehabilitation",
     "Chronic Pain Management",
     "Sports Injury Rehabilitation",
@@ -49,6 +54,12 @@ export const site = {
     "Hip and Back Pain",
     "Knee Rehabilitation",
     "Shoulder Injury Recovery",
+    "Foot and Ankle Physical Therapy",
+    "Plantar Fasciitis",
+    "Ankle Sprain Rehabilitation",
+    "Oov Rehabilitation",
+    "Konnector Pilates",
+    "Reformer Pilates",
   ],
   owner: {
     name: "Nicole Tristram",
@@ -59,7 +70,7 @@ export const site = {
       "Polestar Pilates International Certified",
       "UCF Physical Therapy — Magna Cum Laude, 1998",
     ],
-    bio: "Nicole Tristram, PT is a physical therapist and Polestar Pilates certified practitioner with 25+ years of experience in St. Augustine, FL, specializing in whole-body rehabilitation, women's health, and post-surgical recovery.",
+    bio: "Nicole Tristram, PT is a physical therapist and Polestar Pilates certified practitioner with 25+ years of experience in St. Augustine, FL, specializing in manual therapy, Pilates rehabilitation, women's health, post-surgical recovery, and modalities including Alpha-Stim and Dolphin Neurostim.",
   },
 } as const
 
@@ -75,6 +86,9 @@ export const navLinks = [
       { label: "Shoulder Injury Recovery", href: "/services/shoulder-injury" },
       { label: "Sports Injury Recovery", href: "/services/sports-injury" },
       { label: "Chronic Pain Management", href: "/services/chronic-pain" },
+      { label: "Foot & Ankle", href: "/services/foot-ankle" },
+      { label: "Oov® Rehabilitation", href: "/services/oov" },
+      { label: "Konnector Pilates", href: "/services/konnector" },
     ],
   },
   {
@@ -98,11 +112,12 @@ export const locationLinks = [
 ] as const
 
 export const differentiators = [
+  "Manual therapy techniques",
   "Private, one-on-one sessions (not group PT)",
   "Whole-body assessment — we find the root cause",
-  "PT + Pilates combination (a rare specialty)",
+  "PT + Pilates rehabilitation combination",
   "25+ years of experience",
-  "Alpha-Stem technology",
+  "Modalities: Alpha-Stim and Dolphin Neurostim",
   "Women's health expertise",
   "No insurance hassles (cash-pay; superbill available)",
 ] as const

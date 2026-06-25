@@ -39,7 +39,7 @@ export const physicalTherapyOffering: OfferingPage = {
   headline: "Physical Therapy",
   subheadline: "Private, One-on-One Physical Therapy Designed Around You",
   intro: [
-    "At Premiere Pilates Rehabilitation & Fitness, physical therapy is never rushed or generic. Every session is private, one-on-one, and fully tailored to your body, condition, and goals.",
+    "At Premiere Pilates Rehabilitation and Fitness, physical therapy is never rushed or generic. Every session is private, one-on-one, and fully tailored to your body, condition, and goals.",
     "Whether you're recovering from surgery, dealing with chronic pain, or working to restore mobility and strength, Nicole provides personalized treatment designed to identify the root cause—not just treat symptoms.",
     "Unlike traditional high-volume clinics, you receive Nicole's full attention for the entire session.",
   ],
@@ -101,7 +101,7 @@ export const pilatesOffering: OfferingPage = {
   headline: "Private Pilates Training",
   subheadline: "Build Strength, Improve Alignment, and Move Better",
   intro: [
-    "Pilates at Premiere Pilates Rehabilitation & Fitness is designed to help you move with greater strength, balance, control, and confidence.",
+    "Pilates at Premiere Pilates Rehabilitation and Fitness is designed to help you move with greater strength, balance, control, and confidence.",
     "Whether your goal is improving posture, preventing injury, enhancing athletic performance, or supporting long-term wellness, every session is built around your individual needs.",
     "This is not a one-size-fits-all workout. Every program begins with a personalized assessment so Nicole can understand your posture, movement patterns, strength, and areas of imbalance.",
   ],

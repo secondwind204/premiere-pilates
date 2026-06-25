@@ -55,7 +55,7 @@ export function Header({ solid = false, lightBackground = false }: { solid?: boo
           href="/"
           className="flex items-center gap-3 group shrink-0"
           onClick={closeMobileMenu}
-          aria-label="Premiere Pilates home"
+          aria-label={`${site.name} home`}
         >
           <Image
             src="/images/premierepilateslogo.png"
@@ -66,8 +66,10 @@ export function Header({ solid = false, lightBackground = false }: { solid?: boo
             priority
           />
           <span className={cn("font-medium tracking-tight leading-tight", logoTextClass)}>
-            <span className="text-sm uppercase tracking-[0.15em] opacity-80">Premiere</span>
-            <span className="block text-lg md:text-xl">Pilates</span>
+            <span className="block text-[0.7rem] sm:text-xs uppercase tracking-[0.14em] opacity-90">{site.brandLine1}</span>
+            <span className="block text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.1em] opacity-75 leading-snug">
+              {site.brandLine2}
+            </span>
           </span>
         </Link>
 

@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from "react"
 import { strugglePoints } from "@/lib/content/homepage"
-import { differentiators } from "@/lib/content/site"
+import { differentiators, site } from "@/lib/content/site"
 import {
   Award,
   BadgeCheck,
+  Hand,
   HeartPulse,
   Layers,
   ScanSearch,
@@ -16,11 +17,12 @@ import {
 } from "lucide-react"
 
 const differentiatorIcons: Record<(typeof differentiators)[number], LucideIcon> = {
+  "Manual therapy techniques": Hand,
   "Private, one-on-one sessions (not group PT)": User,
   "Whole-body assessment — we find the root cause": ScanSearch,
-  "PT + Pilates combination (a rare specialty)": Layers,
+  "PT + Pilates rehabilitation combination": Layers,
   "25+ years of experience": Award,
-  "Alpha-Stem technology": Zap,
+  "Modalities: Alpha-Stim and Dolphin Neurostim": Zap,
   "Women's health expertise": HeartPulse,
   "No insurance hassles (cash-pay; superbill available)": BadgeCheck,
 }
@@ -62,7 +64,7 @@ export function ProblemSolution() {
             </ul>
 
             <p className="text-lg leading-relaxed text-foreground">
-              You deserve better. At Premiere Pilates Rehabilitation & Fitness, you get Nicole&apos;s undivided
+              You deserve better. At {site.name}, you get Nicole&apos;s undivided
               attention for the full hour — every session. No juggling multiple patients. No cookie-cutter exercises.
               Just personalized, hands-on treatment that finds and fixes the root cause of your pain.
             </p>

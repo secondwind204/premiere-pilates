@@ -17,8 +17,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Premiere Pilates | Physical Therapy & Pilates in St. Augustine, FL",
-    template: "%s | Premiere Pilates",
+    default: "Premiere Pilates Rehabilitation and Fitness | Physical Therapy & Pilates in St. Augustine, FL",
+    template: "%s | Premiere Pilates Rehabilitation and Fitness",
   },
   description: site.description,
   authors: [{ name: site.owner.name, url: `${site.url}/about` }],

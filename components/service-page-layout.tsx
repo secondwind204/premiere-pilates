@@ -131,8 +131,12 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
 
         <section className="py-16 md:py-24 bg-secondary/30">
           <div className="container mx-auto px-6 md:px-12">
-            <p className="text-muted-foreground text-sm tracking-[0.25em] uppercase mb-4">Conditions Treated</p>
-            <h2 className="text-2xl md:text-3xl font-medium tracking-tight mb-10">What we treat</h2>
+            <p className="text-muted-foreground text-sm tracking-[0.25em] uppercase mb-4">
+              {service.whatWeTreatLabel ?? "Conditions Treated"}
+            </p>
+            <h2 className="text-2xl md:text-3xl font-medium tracking-tight mb-10">
+              {service.whatWeTreatHeading ?? "What we treat"}
+            </h2>
 
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div className={`grid gap-6 ${service.whatWeTreat.length > 1 ? "sm:grid-cols-2" : "grid-cols-1"}`}>

@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react"
 import {
   Arm,
   BackPain,
+  Foot,
   Leg,
   PainManagment,
   Stitches,
@@ -17,6 +18,7 @@ const iconMap = {
   woman: Woman,
   leg: Leg,
   arm: Arm,
+  foot: Foot,
   traumatism: Traumatism,
   painManagement: PainManagment,
 } as const

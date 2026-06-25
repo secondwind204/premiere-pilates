@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { ServicePageLayout } from "@/components/service-page-layout"
 import { getServiceBySlug, services } from "@/lib/content/services"
-import { createMetadata } from "@/lib/seo"
+import { createMetadata, localGeoKeywords, serviceSeoKeywords } from "@/lib/seo"
+import { site } from "@/lib/content/site"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -26,9 +27,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ogTitle: service.title,
     keywords: [
       service.headline,
-      "St Augustine physical therapy",
+      site.name,
       "Nicole Tristram PT",
-      "private physical therapy",
+      ...localGeoKeywords,
+      ...(serviceSeoKeywords[service.slug] ?? []),
     ],
   })
 }

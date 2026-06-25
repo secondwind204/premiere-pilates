@@ -19,6 +19,11 @@ export const homepageFaqs: FaqItem[] = [
     question: "How long are sessions?",
     answer: "A full hour of undivided attention — never a therapist split across multiple patients.",
   },
+  {
+    question: "What is Pilates rehabilitation?",
+    answer:
+      "Pilates rehabilitation combines clinical physical therapy with mindful, equipment-based Pilates — using tools like the Reformer, Cadillac, Wunda Chair, Spine Corrector, Oov, and Konnector to rebuild core stability, flexibility, and healthy movement patterns during recovery.",
+  },
 ]
 
 export const strugglePoints = [
@@ -80,6 +85,22 @@ export const aboutNicoleSummary = {
     "Nicole is an advocate for Women's Health and the focus of her private practice is Prevention & Wellness which can only be achieved through balance of Body, Mind & Spirit.",
   ],
 }
+
+export const pilatesRehabilitationIntro = {
+  title: "What Is Pilates Rehabilitation?",
+  paragraphs: [
+    "Pilates rehabilitation bridges the gap between clinical physical therapy and lasting fitness. Rooted in principles of concentration, control, centering, breath, precision, and flow, it emphasizes mindful movement — essential when every repetition needs to support healing rather than reinforce bad habits. Nicole uses specialized studio equipment including the Reformer, Cadillac (Trapeze Table), Wunda Chair, and Spine Corrector to deliver variable resistance and support tailored to your diagnosis, tolerance, and stage of recovery.",
+    "In practice, Pilates rehabilitation builds deep core stability, balanced strength around joints, improved flexibility, and better posture — correcting the muscle imbalances and faulty movement patterns that often keep pain cycling. Whether you are recovering from surgery, managing chronic pain, or rebuilding after injury, this low-impact approach retrains how your body moves in daily life. Nicole also integrates the Oov and Konnector for advanced core control, proprioception, and functional movement training within your one-on-one sessions.",
+  ],
+  equipment: [
+    "Reformer",
+    "Cadillac (Trapeze Table)",
+    "Wunda Chair",
+    "Spine Corrector",
+    "Oov",
+    "Konnector",
+  ],
+} as const
 
 export const pilatesHistory = {
   title: "About Pilates",

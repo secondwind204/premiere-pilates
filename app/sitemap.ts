@@ -54,5 +54,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...getStartedPages,
     ...locationPages,
     ...servicePages,
+    {
+      url: `${site.url}/llms.txt`,
+      lastModified: new Date(site.lastReviewed),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
   ]
 }

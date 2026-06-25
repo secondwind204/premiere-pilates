@@ -144,7 +144,7 @@ export function OfferingPageLayout({ offering }: { offering: OfferingPage }) {
       <section className="py-16 md:py-24 bg-secondary/30">
         <div className="container mx-auto px-6 md:px-12">
           <h2 className="text-2xl md:text-3xl font-medium tracking-tight mb-8">
-            {offering.slug === "pilates" ? "Why Premiere Pilates" : "Why Clients Choose Premiere Pilates"}
+            {offering.slug === "pilates" ? `Why ${site.name}` : `Why Clients Choose ${site.name}`}
           </h2>
           <ul className="grid sm:grid-cols-2 gap-4 max-w-3xl">
             {offering.whyChoose.map((item) => (
