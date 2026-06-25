@@ -1,11 +1,11 @@
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { site } from "@/lib/content/site"
 import { ContactForm } from "@/components/contact-form"
 import {
   JsonLd,
   breadcrumbSchema,
+  createSchemaContext,
   graphSchema,
   localBusinessSchema,
   personSchema,
@@ -13,36 +13,40 @@ import {
   websiteSchema,
 } from "@/lib/schema"
 import { createMetadata } from "@/lib/seo"
+import { getSite } from "@/lib/sanity/fetch"
 import { MapPin, Phone, Mail, Printer, Clock } from "lucide-react"
 
-export const metadata: Metadata = createMetadata({
-  title: "Contact & Schedule an Evaluation",
-  description:
-    "Contact Nicole Tristram, PT at Premiere Pilates in St. Augustine. Call (904) 315-0667 or schedule your initial one-on-one physical therapy evaluation.",
-  path: "/contact",
-  keywords: [
-    "schedule physical therapy St Augustine",
-    "Premiere Pilates contact",
-    "physical therapy appointment St Augustine",
-    "Nicole Tristram phone",
-  ],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  const site = await getSite()
 
-export default function ContactPage() {
+  return createMetadata({
+    title: "Contact & Schedule an Evaluation",
+    description:
+      "Contact Nicole Tristram, PT at Premiere Pilates in St. Augustine. Call (904) 315-0667 or schedule your initial one-on-one physical therapy evaluation.",
+    path: "/contact",
+    site,
+    keywords: [
+      "schedule physical therapy St Augustine",
+      "Premiere Pilates contact",
+      "physical therapy appointment St Augustine",
+      "Nicole Tristram phone",
+    ],
+  })
+}
+
+export default async function ContactPage() {
+  const site = await getSite()
+  const schemaCtx = createSchemaContext(site)
   const pageUrl = `${site.url}/contact`
 
   return (
     <>
       <JsonLd
         data={graphSchema([
-          websiteSchema(),
-          localBusinessSchema(),
-          personSchema(),
-          webPageSchema(
-            "Contact Premiere Pilates",
-            "Schedule your one-on-one physical therapy or Pilates evaluation in St. Augustine, FL.",
-            pageUrl,
-          ),
+          websiteSchema(schemaCtx),
+          localBusinessSchema(schemaCtx),
+          personSchema(schemaCtx),
+          webPageSchema(site, "Contact Premiere Pilates", "Schedule your one-on-one physical therapy or Pilates evaluation in St. Augustine, FL.", pageUrl),
           breadcrumbSchema([
             { name: "Home", url: site.url },
             { name: "Contact", url: pageUrl },

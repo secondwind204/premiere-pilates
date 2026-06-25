@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { ArrowRight, Phone } from "lucide-react"
 import { primaryCtaClass, primaryCtaInvertedClass } from "@/lib/cta-styles"
-import { site } from "@/lib/content/site"
+import { getSite } from "@/lib/sanity/fetch"
 
 type CtaSectionProps = {
   title?: string
@@ -11,13 +11,15 @@ type CtaSectionProps = {
   id?: string
 }
 
-export function CtaSection({
+export async function CtaSection({
   title = "Ready to feel better?",
   description = "Schedule your initial evaluation. Nicole will assess your condition, explain what's causing your pain, and build a personalized plan.",
   dark = true,
   className = "",
   id = "contact",
 }: CtaSectionProps) {
+  const site = await getSite()
+
   return (
     <section
       id={id}
@@ -33,10 +35,7 @@ export function CtaSection({
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <Link
-              href={site.scheduleUrl}
-              className={dark ? primaryCtaInvertedClass : primaryCtaClass}
-            >
+            <Link href={site.scheduleUrl} className={dark ? primaryCtaInvertedClass : primaryCtaClass}>
               Schedule Evaluation
               <ArrowRight className="w-4 h-4" />
             </Link>

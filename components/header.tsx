@@ -5,10 +5,11 @@ import Link from "next/link"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { primaryCtaCompactClass, primaryCtaCompactInvertedClass } from "@/lib/cta-styles"
-import { navLinks, site } from "@/lib/content/site"
+import { useSiteContext } from "@/components/site-provider"
 import { ChevronDown, Phone } from "lucide-react"
 
 export function Header({ solid = false, lightBackground = false }: { solid?: boolean; lightBackground?: boolean }) {
+  const { site, navLinks } = useSiteContext()
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null)

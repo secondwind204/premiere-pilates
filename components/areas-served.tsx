@@ -1,8 +1,10 @@
 import Link from "next/link"
 import { ArrowUpRight, MapPin } from "lucide-react"
-import { locationLinks } from "@/lib/content/site"
+import { getLayoutData } from "@/lib/sanity/fetch"
 
-export function AreasServed() {
+export async function AreasServed() {
+  const { locationLinks } = await getLayoutData()
+
   return (
     <section className="py-16 md:py-20 border-y border-border bg-background" aria-labelledby="areas-served-heading">
       <div className="container mx-auto px-6 md:px-12">

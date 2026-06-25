@@ -2,13 +2,14 @@ import Link from "next/link"
 import { ArrowRight, Check, Phone } from "lucide-react"
 import type { OfferingPage } from "@/lib/content/offerings"
 import { primaryCtaClass } from "@/lib/cta-styles"
-import { site } from "@/lib/content/site"
+import { getSite } from "@/lib/sanity/fetch"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { CtaSection } from "@/components/cta-section"
 import {
   JsonLd,
   breadcrumbSchema,
+  createSchemaContext,
   graphSchema,
   localBusinessSchema,
   offerCatalogSchema,
@@ -18,7 +19,9 @@ import {
   websiteSchema,
 } from "@/lib/schema"
 
-export function OfferingPageLayout({ offering }: { offering: OfferingPage }) {
+export async function OfferingPageLayout({ offering }: { offering: OfferingPage }) {
+  const site = await getSite()
+  const schemaCtx = createSchemaContext(site)
   const pageUrl = `${site.url}/get-started/${offering.slug}`
   const allPricing = [...offering.pricing, ...(offering.pricingPackages ?? [])]
 
@@ -26,12 +29,15 @@ export function OfferingPageLayout({ offering }: { offering: OfferingPage }) {
     <>
       <JsonLd
         data={graphSchema([
-          websiteSchema(),
-          localBusinessSchema(),
-          personSchema(),
-          webPageSchema(offering.title, offering.metaDescription, pageUrl),
-          serviceSchema(offering.title, offering.metaDescription, pageUrl),
-          offerCatalogSchema(allPricing.map((item) => ({ name: item.label, price: item.price }))),
+          websiteSchema(schemaCtx),
+          localBusinessSchema(schemaCtx),
+          personSchema(schemaCtx),
+          webPageSchema(site, offering.title, offering.metaDescription, pageUrl),
+          serviceSchema(site, offering.title, offering.metaDescription, pageUrl),
+          offerCatalogSchema(
+            site,
+            allPricing.map((item) => ({ name: item.label, price: item.price })),
+          ),
           breadcrumbSchema([
             { name: "Home", url: site.url },
             { name: "Get Started", url: `${site.url}/get-started` },

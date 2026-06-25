@@ -3,7 +3,7 @@ import Image from "next/image"
 import { ArrowRight, Check, Phone } from "lucide-react"
 import type { ServicePage } from "@/lib/content/services"
 import { primaryCtaClass, primaryCtaInvertedClass } from "@/lib/cta-styles"
-import { site } from "@/lib/content/site"
+import { getSite } from "@/lib/sanity/fetch"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { FaqSection } from "@/components/faq-section"
@@ -12,18 +12,20 @@ import { CtaSection } from "@/components/cta-section"
 import {
   JsonLd,
   breadcrumbSchema,
+  createSchemaContext,
   faqSchema,
   graphSchema,
   localBusinessSchema,
   medicalWebPageSchema,
-  offerCatalogSchema,
   personSchema,
   serviceSchema,
   websiteSchema,
 } from "@/lib/schema"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-export function ServicePageLayout({ service }: { service: ServicePage }) {
+export async function ServicePageLayout({ service }: { service: ServicePage }) {
+  const site = await getSite()
+  const schemaCtx = createSchemaContext(site)
   const pageUrl = `${site.url}/services/${service.slug}`
   const conditionName = service.headline.split(" in ")[0]
 
@@ -31,11 +33,11 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
     <>
       <JsonLd
         data={graphSchema([
-          websiteSchema(),
-          localBusinessSchema(),
-          personSchema(),
-          medicalWebPageSchema(service.title, service.metaDescription, pageUrl, conditionName),
-          serviceSchema(service.title, service.metaDescription, pageUrl),
+          websiteSchema(schemaCtx),
+          localBusinessSchema(schemaCtx),
+          personSchema(schemaCtx),
+          medicalWebPageSchema(site, service.title, service.metaDescription, pageUrl, conditionName),
+          serviceSchema(site, service.title, service.metaDescription, pageUrl),
           breadcrumbSchema([
             { name: "Home", url: site.url },
             { name: "Services", url: `${site.url}/#services` },
@@ -238,7 +240,7 @@ export function ServicePageLayout({ service }: { service: ServicePage }) {
           </section>
         )}
 
-        <TestimonialsSection testimonials={service.testimonials} />
+        <TestimonialsSection testimonials={service.testimonials} site={site} />
         <FaqSection faqs={service.faqs} />
         <CtaSection title="Take the next step" description={service.ctaText} />
         <Footer />

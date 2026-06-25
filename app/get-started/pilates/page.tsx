@@ -1,20 +1,30 @@
 import type { Metadata } from "next"
+import { notFound } from "next/navigation"
 import { OfferingPageLayout } from "@/components/offering-page-layout"
-import { pilatesOffering } from "@/lib/content/offerings"
 import { createMetadata } from "@/lib/seo"
+import { getOfferingBySlug, getSite } from "@/lib/sanity/fetch"
 
-export const metadata: Metadata = createMetadata({
-  title: pilatesOffering.title,
-  description: pilatesOffering.metaDescription,
-  path: "/get-started/pilates",
-  keywords: [
-    "private Pilates St Augustine",
-    "Pilates training St Augustine",
-    "Pilates rehabilitation",
-    "Nicole Tristram Pilates",
-  ],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  const [offering, site] = await Promise.all([getOfferingBySlug("pilates"), getSite()])
+  if (!offering) return {}
 
-export default function PilatesOfferingPage() {
-  return <OfferingPageLayout offering={pilatesOffering} />
+  return createMetadata({
+    title: offering.title,
+    description: offering.metaDescription,
+    path: "/get-started/pilates",
+    site,
+    keywords: [
+      "private Pilates St Augustine",
+      "Pilates training St Augustine",
+      "Polestar Pilates",
+      "Nicole Tristram PT",
+    ],
+  })
+}
+
+export default async function PilatesOfferingPage() {
+  const offering = await getOfferingBySlug("pilates")
+  if (!offering) notFound()
+
+  return <OfferingPageLayout offering={offering} />
 }

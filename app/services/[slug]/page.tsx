@@ -1,21 +1,21 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { ServicePageLayout } from "@/components/service-page-layout"
-import { getServiceBySlug, services } from "@/lib/content/services"
 import { createMetadata, localGeoKeywords, serviceSeoKeywords } from "@/lib/seo"
-import { site } from "@/lib/content/site"
+import { getServiceBySlug, getServices, getSite } from "@/lib/sanity/fetch"
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
+  const services = await getServices()
   return services.map((service) => ({ slug: service.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const service = getServiceBySlug(slug)
+  const [service, site] = await Promise.all([getServiceBySlug(slug), getSite()])
   if (!service) return {}
 
   const shortTitle = service.title.replace(" | Premiere Pilates", "")
@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: service.metaDescription,
     path: `/services/${service.slug}`,
     ogTitle: service.title,
+    site,
     keywords: [
       service.headline,
       site.name,
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServicePage({ params }: Props) {
   const { slug } = await params
-  const service = getServiceBySlug(slug)
+  const service = await getServiceBySlug(slug)
 
   if (!service) notFound()
 

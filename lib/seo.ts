@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { site } from "@/lib/content/site"
+import type { Site } from "@/lib/content/site"
 
 export const localGeoKeywords = [
   "St Augustine FL",
@@ -29,15 +29,15 @@ type CreateMetadataOptions = {
   ogTitle?: string
   ogDescription?: string
   keywords?: string[]
-  /** Use for homepage to avoid title template suffix duplication */
   absoluteTitle?: boolean
+  site: Site
 }
 
-export function absoluteUrl(path: string) {
+export function absoluteUrl(path: string, site: Site) {
   return path.startsWith("http") ? path : `${site.url}${path.startsWith("/") ? path : `/${path}`}`
 }
 
-export function baseMetadata(): Metadata {
+export function baseMetadata(site: Site): Metadata {
   return {
     openGraph: {
       siteName: site.shortName,
@@ -84,8 +84,10 @@ export function createMetadata({
   ogDescription,
   keywords,
   absoluteTitle = false,
+  site,
 }: CreateMetadataOptions): Metadata {
-  const url = absoluteUrl(path)
+  const url = absoluteUrl(path, site)
+  const base = baseMetadata(site)
 
   return {
     title: absoluteTitle ? { absolute: title } : title,
@@ -95,17 +97,17 @@ export function createMetadata({
       canonical: url,
     },
     openGraph: {
-      ...baseMetadata().openGraph,
+      ...base.openGraph,
       title: ogTitle ?? title,
       description: ogDescription ?? description,
       url,
     },
     twitter: {
-      ...baseMetadata().twitter,
+      ...base.twitter,
       title: ogTitle ?? title,
       description: ogDescription ?? description,
     },
-    robots: baseMetadata().robots,
-    other: baseMetadata().other,
+    robots: base.robots,
+    other: base.other,
   }
 }

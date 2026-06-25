@@ -1,6 +1,8 @@
-import { pilatesRehabilitationIntro } from "@/lib/content/homepage"
+import { getHomepage } from "@/lib/sanity/fetch"
 
-export function PilatesRehabilitation() {
+export async function PilatesRehabilitation() {
+  const { pilatesRehabilitationIntro } = await getHomepage()
+
   return (
     <section id="pilates-rehabilitation" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-6 md:px-12">

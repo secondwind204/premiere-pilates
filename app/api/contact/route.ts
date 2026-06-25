@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
 import { z } from "zod"
-import { site } from "@/lib/content/site"
+import { getSite } from "@/lib/sanity/fetch"
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(120),
@@ -45,6 +45,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true })
   }
 
+  const site = await getSite()
   const resend = new Resend(apiKey)
   const to = process.env.CONTACT_TO_EMAIL ?? site.contactFormEmail
   const from =

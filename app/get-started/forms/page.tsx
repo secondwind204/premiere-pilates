@@ -7,35 +7,43 @@ import Link from "next/link"
 import {
   JsonLd,
   breadcrumbSchema,
+  createSchemaContext,
   graphSchema,
   localBusinessSchema,
   webPageSchema,
   websiteSchema,
 } from "@/lib/schema"
 import { createMetadata } from "@/lib/seo"
-import { site } from "@/lib/content/site"
+import { getFormCategories, getPatientForms, getSite } from "@/lib/sanity/fetch"
 
-export const metadata: Metadata = createMetadata({
-  title: "Patient Forms",
-  description:
-    "Download patient intake forms, medical history questionnaires, and functional scales for Premiere Pilates Rehabilitation and Fitness in St. Augustine, FL.",
-  path: "/get-started/forms",
-})
+export async function generateMetadata(): Promise<Metadata> {
+  const site = await getSite()
 
-export default function GetStartedFormsPage() {
+  return createMetadata({
+    title: "Patient Forms",
+    description:
+      "Download patient intake forms, medical history questionnaires, and functional scales for Premiere Pilates Rehabilitation and Fitness in St. Augustine, FL.",
+    path: "/get-started/forms",
+    site,
+  })
+}
+
+export default async function GetStartedFormsPage() {
+  const [site, intakeForms, formCategories] = await Promise.all([
+    getSite(),
+    getPatientForms(),
+    getFormCategories(),
+  ])
+  const schemaCtx = createSchemaContext(site)
   const pageUrl = `${site.url}/get-started/forms`
 
   return (
     <>
       <JsonLd
         data={graphSchema([
-          websiteSchema(),
-          localBusinessSchema(),
-          webPageSchema(
-            "Patient Forms",
-            "Download intake forms and functional scales for Premiere Pilates in St. Augustine, FL.",
-            pageUrl,
-          ),
+          websiteSchema(schemaCtx),
+          localBusinessSchema(schemaCtx),
+          webPageSchema(site, "Patient Forms", "Download intake forms and functional scales for Premiere Pilates in St. Augustine, FL.", pageUrl),
           breadcrumbSchema([
             { name: "Home", url: site.url },
             { name: "Get Started", url: `${site.url}/get-started` },
@@ -76,7 +84,7 @@ export default function GetStartedFormsPage() {
           </div>
         </section>
 
-        <GetStartedForms />
+        <GetStartedForms intakeForms={intakeForms} formCategories={formCategories} />
 
         <CtaSection
           title="Ready to begin?"

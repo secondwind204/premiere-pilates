@@ -1,12 +1,20 @@
 "use client"
 
 import { useState } from "react"
-import { formCategories, intakeForms } from "@/lib/content/forms"
-import { site } from "@/lib/content/site"
+import type { FormDownload } from "@/lib/content/forms"
+import { useSiteContext } from "@/components/site-provider"
 import { Download, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-export function GetStartedForms() {
+type FormCategory = { id: string; label: string }
+
+type GetStartedFormsProps = {
+  intakeForms: FormDownload[]
+  formCategories: readonly FormCategory[]
+}
+
+export function GetStartedForms({ intakeForms, formCategories }: GetStartedFormsProps) {
+  const { site } = useSiteContext()
   const [activeCategory, setActiveCategory] = useState<string>("all")
 
   const filteredForms =

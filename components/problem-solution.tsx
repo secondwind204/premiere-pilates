@@ -1,8 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { strugglePoints } from "@/lib/content/homepage"
-import { differentiators, site } from "@/lib/content/site"
+import { useSiteContext } from "@/components/site-provider"
 import {
   Award,
   BadgeCheck,
@@ -16,7 +15,7 @@ import {
   type LucideIcon,
 } from "lucide-react"
 
-const differentiatorIcons: Record<(typeof differentiators)[number], LucideIcon> = {
+const differentiatorIcons: Record<string, LucideIcon> = {
   "Manual therapy techniques": Hand,
   "Private, one-on-one sessions (not group PT)": User,
   "Whole-body assessment — we find the root cause": ScanSearch,
@@ -27,7 +26,8 @@ const differentiatorIcons: Record<(typeof differentiators)[number], LucideIcon> 
   "No insurance hassles (cash-pay; superbill available)": BadgeCheck,
 }
 
-export function ProblemSolution() {
+export function ProblemSolution({ strugglePoints }: { strugglePoints: string[] }) {
+  const { site, differentiators } = useSiteContext()
   const [visible, setVisible] = useState(false)
   const ref = useRef<HTMLElement>(null)
 

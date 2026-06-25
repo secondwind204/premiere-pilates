@@ -74,6 +74,64 @@ export const site = {
   },
 } as const
 
+export type Site = {
+  name: string
+  shortName: string
+  brandLine1: string
+  brandLine2: string
+  tagline: string
+  description: string
+  url: string
+  locale: string
+  phone: string
+  phoneHref: string
+  fax: string
+  email: string
+  contactFormEmail: string
+  address: {
+    street: string
+    city: string
+    state: string
+    zip: string
+    full: string
+  }
+  geo: { latitude: number; longitude: number }
+  mapsUrl: string
+  serviceAreas: string[]
+  googleReviews: {
+    rating: number
+    ratingDisplay: string
+    count: number
+    url: string
+  }
+  sameAs: readonly string[]
+  scheduleUrl: string
+  ogImage: string
+  logo: string
+  lastReviewed: string
+  hours: readonly { days: readonly string[]; opens: string; closes: string }[]
+  hoursDisplay: string
+  knowsAbout: readonly string[]
+  owner: {
+    name: string
+    title: string
+    credentials: string
+    credentialsList: readonly string[]
+    bio: string
+  }
+}
+
+export type NavLink = {
+  label: string
+  href: string
+  children?: { label: string; href: string }[]
+}
+
+export type LocationLink = {
+  label: string
+  href: string
+}
+
 export const navLinks = [
   {
     label: "Services",

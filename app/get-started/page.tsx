@@ -4,46 +4,52 @@ import { ArrowUpRight } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { CtaSection } from "@/components/cta-section"
-import { getStartedPaths } from "@/lib/content/offerings"
-import { homepageFaqs } from "@/lib/content/homepage"
 import {
   JsonLd,
   breadcrumbSchema,
+  createSchemaContext,
   faqSchema,
   graphSchema,
+  localBusinessSchema,
   webPageSchema,
   websiteSchema,
-  localBusinessSchema,
 } from "@/lib/schema"
 import { createMetadata } from "@/lib/seo"
-import { site } from "@/lib/content/site"
+import { getGetStartedPaths, getHomepage, getSite } from "@/lib/sanity/fetch"
 
-export const metadata: Metadata = createMetadata({
-  title: "Get Started",
-  description:
-    "Choose physical therapy or private Pilates training at Premiere Pilates in St. Augustine. View pricing, download patient forms, and schedule your evaluation.",
-  path: "/get-started",
-})
+export async function generateMetadata(): Promise<Metadata> {
+  const site = await getSite()
 
-export default function GetStartedPage() {
+  return createMetadata({
+    title: "Get Started",
+    description:
+      "Choose physical therapy or private Pilates training at Premiere Pilates in St. Augustine. View pricing, download patient forms, and schedule your evaluation.",
+    path: "/get-started",
+    site,
+  })
+}
+
+export default async function GetStartedPage() {
+  const [site, getStartedPaths, homepage] = await Promise.all([
+    getSite(),
+    getGetStartedPaths(),
+    getHomepage(),
+  ])
+  const schemaCtx = createSchemaContext(site)
   const pageUrl = `${site.url}/get-started`
 
   return (
     <>
       <JsonLd
         data={graphSchema([
-          websiteSchema(),
-          localBusinessSchema(),
-          webPageSchema(
-            "Get Started with Premiere Pilates",
-            "Choose physical therapy or private Pilates training in St. Augustine, FL.",
-            pageUrl,
-          ),
+          websiteSchema(schemaCtx),
+          localBusinessSchema(schemaCtx),
+          webPageSchema(site, "Get Started with Premiere Pilates", "Choose physical therapy or private Pilates training in St. Augustine, FL.", pageUrl),
           breadcrumbSchema([
             { name: "Home", url: site.url },
             { name: "Get Started", url: pageUrl },
           ]),
-          faqSchema(homepageFaqs.slice(0, 3)),
+          faqSchema(homepage.faqs.slice(0, 3)),
         ])}
       />
       <main className="min-h-screen overflow-x-hidden">

@@ -1,8 +1,9 @@
-import { navLinks, site, locationLinks } from "@/lib/content/site"
+import { getLayoutData } from "@/lib/sanity/fetch"
 import Link from "next/link"
 import { Phone, Star } from "lucide-react"
 
-export function Footer() {
+export async function Footer() {
+  const { site, navLinks, locationLinks } = await getLayoutData()
   const servicesLink = navLinks.find((l) => l.label === "Services")
 
   return (
@@ -45,15 +46,13 @@ export function Footer() {
           <div>
             <h2 className="text-sm font-medium mb-4">Services</h2>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              {servicesLink && "children" in servicesLink
-                ? servicesLink.children.map((child) => (
-                    <li key={child.href}>
-                      <Link href={child.href} className="hover:text-foreground transition-colors">
-                        {child.label}
-                      </Link>
-                    </li>
-                  ))
-                : null}
+              {servicesLink?.children?.map((child) => (
+                <li key={child.href}>
+                  <Link href={child.href} className="hover:text-foreground transition-colors">
+                    {child.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

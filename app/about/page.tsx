@@ -3,10 +3,10 @@ import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { CtaSection } from "@/components/cta-section"
-import { aboutNicoleSummary, pilatesHistory } from "@/lib/content/homepage"
 import {
   JsonLd,
   breadcrumbSchema,
+  createSchemaContext,
   graphSchema,
   localBusinessSchema,
   personSchema,
@@ -14,36 +14,40 @@ import {
   websiteSchema,
 } from "@/lib/schema"
 import { createMetadata } from "@/lib/seo"
-import { site } from "@/lib/content/site"
+import { getHomepage, getSite } from "@/lib/sanity/fetch"
 
-export const metadata: Metadata = createMetadata({
-  title: "About Nicole Tristram, PT",
-  description:
-    "Meet Nicole Tristram, PT — Polestar Pilates certified physical therapist with 25+ years of experience in St. Augustine, FL. Former professional dancer specializing in women's health and whole-body rehabilitation.",
-  path: "/about",
-  keywords: [
-    "Nicole Tristram physical therapist",
-    "Polestar Pilates St Augustine",
-    "physical therapist St Augustine",
-    "women's health PT",
-  ],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  const site = await getSite()
 
-export default function AboutPage() {
+  return createMetadata({
+    title: "About Nicole Tristram, PT",
+    description:
+      "Meet Nicole Tristram, PT — Polestar Pilates certified physical therapist with 25+ years of experience in St. Augustine, FL. Former professional dancer specializing in women's health and whole-body rehabilitation.",
+    path: "/about",
+    site,
+    keywords: [
+      "Nicole Tristram physical therapist",
+      "Polestar Pilates St Augustine",
+      "physical therapist St Augustine",
+      "women's health PT",
+    ],
+  })
+}
+
+export default async function AboutPage() {
+  const [site, homepage] = await Promise.all([getSite(), getHomepage()])
+  const { aboutNicoleSummary, pilatesHistory } = homepage
+  const schemaCtx = createSchemaContext(site)
   const pageUrl = `${site.url}/about`
 
   return (
     <>
       <JsonLd
         data={graphSchema([
-          websiteSchema(),
-          localBusinessSchema(),
-          personSchema(),
-          webPageSchema(
-            "About Nicole Tristram, PT",
-            "Meet Nicole Tristram, PT — Polestar Pilates certified physical therapist in St. Augustine, FL.",
-            pageUrl,
-          ),
+          websiteSchema(schemaCtx),
+          localBusinessSchema(schemaCtx),
+          personSchema(schemaCtx),
+          webPageSchema(site, "About Nicole Tristram, PT", "Meet Nicole Tristram, PT — Polestar Pilates certified physical therapist in St. Augustine, FL.", pageUrl),
           breadcrumbSchema([
             { name: "Home", url: site.url },
             { name: "About", url: pageUrl },

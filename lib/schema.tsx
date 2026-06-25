@@ -1,13 +1,26 @@
-import { homepageTestimonials } from "@/lib/content/homepage"
-import { services } from "@/lib/content/services"
-import { site } from "@/lib/content/site"
+import type { ServicePage, Testimonial } from "@/lib/content/services"
+import type { Site } from "@/lib/content/site"
 import { absoluteUrl } from "@/lib/seo"
 
-const BUSINESS_ID = `${site.url}/#business`
-const WEBSITE_ID = `${site.url}/#website`
-const PERSON_ID = `${site.url}/#nicole-tristram`
+export type SchemaContext = {
+  site: Site
+  services?: ServicePage[]
+  testimonials?: Testimonial[]
+}
 
-function postalAddress() {
+function ids(site: Site) {
+  return {
+    business: `${site.url}/#business`,
+    website: `${site.url}/#website`,
+    person: `${site.url}/#nicole-tristram`,
+  }
+}
+
+function absoluteImage(site: Site, path: string) {
+  return path.startsWith("http") ? path : `${site.url}${path}`
+}
+
+function postalAddress(site: Site) {
   return {
     "@type": "PostalAddress",
     streetAddress: site.address.street,
@@ -18,7 +31,7 @@ function postalAddress() {
   }
 }
 
-function openingHours() {
+function openingHours(site: Site) {
   return site.hours.map((entry) => ({
     "@type": "OpeningHoursSpecification",
     dayOfWeek: entry.days,
@@ -27,31 +40,33 @@ function openingHours() {
   }))
 }
 
-export function websiteSchema() {
+export function websiteSchema({ site }: SchemaContext) {
+  const { website, business } = ids(site)
   return {
     "@type": "WebSite",
-    "@id": WEBSITE_ID,
+    "@id": website,
     name: site.shortName,
     url: site.url,
     description: site.description,
     inLanguage: "en-US",
-    publisher: { "@id": BUSINESS_ID },
+    publisher: { "@id": business },
   }
 }
 
-export function localBusinessSchema() {
+export function localBusinessSchema({ site, services = [] }: SchemaContext) {
+  const { business, person, website } = ids(site)
   return {
     "@type": ["PhysicalTherapy", "LocalBusiness", "MedicalBusiness"],
-    "@id": BUSINESS_ID,
+    "@id": business,
     name: site.name,
     alternateName: site.shortName,
     description: site.description,
     url: site.url,
     telephone: site.phone,
     email: site.email,
-    image: absoluteImage(site.ogImage),
-    logo: absoluteImage(site.logo),
-    address: postalAddress(),
+    image: absoluteImage(site, site.ogImage),
+    logo: absoluteImage(site, site.logo),
+    address: postalAddress(site),
     geo: {
       "@type": "GeoCoordinates",
       latitude: site.geo.latitude,
@@ -71,9 +86,9 @@ export function localBusinessSchema() {
       worstRating: 1,
     },
     priceRange: "$$",
-    openingHoursSpecification: openingHours(),
-    founder: { "@id": PERSON_ID },
-    employee: { "@id": PERSON_ID },
+    openingHoursSpecification: openingHours(site),
+    founder: { "@id": person },
+    employee: { "@id": person },
     knowsAbout: site.knowsAbout,
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -81,7 +96,7 @@ export function localBusinessSchema() {
       itemListElement: services.map((service) => ({
         "@type": "Offer",
         name: service.title,
-        url: absoluteUrl(`/services/${service.slug}`),
+        url: absoluteUrl(`/services/${service.slug}`, site),
       })),
     },
     paymentAccepted: "Cash, Check, Credit Card, Medicare",
@@ -91,26 +106,25 @@ export function localBusinessSchema() {
       "@type": "ReserveAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: absoluteUrl(site.scheduleUrl),
-        actionPlatform: [
-          "http://schema.org/DesktopWebPlatform",
-          "http://schema.org/MobileWebPlatform",
-        ],
+        urlTemplate: absoluteUrl(site.scheduleUrl, site),
+        actionPlatform: ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"],
       },
       name: "Schedule Evaluation",
     },
+    isPartOf: { "@id": website },
   }
 }
 
-export function personSchema() {
+export function personSchema({ site }: SchemaContext) {
+  const { person, business } = ids(site)
   return {
     "@type": "Person",
-    "@id": PERSON_ID,
+    "@id": person,
     name: site.owner.name,
     jobTitle: site.owner.title,
     description: site.owner.bio,
     url: `${site.url}/about`,
-    worksFor: { "@id": BUSINESS_ID },
+    worksFor: { "@id": business },
     knowsAbout: site.knowsAbout,
     alumniOf: {
       "@type": "CollegeOrUniversity",
@@ -150,35 +164,36 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
 }
 
 export function medicalWebPageSchema(
+  site: Site,
   title: string,
   description: string,
   url: string,
   conditionName?: string,
 ) {
+  const { website, person, business } = ids(site)
   return {
     "@type": "MedicalWebPage",
     name: title,
     description,
     url,
     inLanguage: "en-US",
-    isPartOf: { "@id": WEBSITE_ID },
-    about: conditionName
-      ? { "@type": "MedicalCondition", name: conditionName }
-      : undefined,
+    isPartOf: { "@id": website },
+    about: conditionName ? { "@type": "MedicalCondition", name: conditionName } : undefined,
     lastReviewed: site.lastReviewed,
-    reviewedBy: { "@id": PERSON_ID },
-    author: { "@id": PERSON_ID },
-    publisher: { "@id": BUSINESS_ID },
+    reviewedBy: { "@id": person },
+    author: { "@id": person },
+    publisher: { "@id": business },
   }
 }
 
-export function serviceSchema(name: string, description: string, url: string) {
+export function serviceSchema(site: Site, name: string, description: string, url: string) {
+  const { business } = ids(site)
   return {
     "@type": "MedicalTherapy",
     name,
     description,
     url,
-    provider: { "@id": BUSINESS_ID },
+    provider: { "@id": business },
     areaServed: site.serviceAreas.map((area) => ({
       "@type": "AdministrativeArea",
       name: area,
@@ -186,21 +201,23 @@ export function serviceSchema(name: string, description: string, url: string) {
   }
 }
 
-export function webPageSchema(title: string, description: string, url: string) {
+export function webPageSchema(site: Site, title: string, description: string, url: string) {
+  const { website, business } = ids(site)
   return {
     "@type": "WebPage",
     name: title,
     description,
     url,
     inLanguage: "en-US",
-    isPartOf: { "@id": WEBSITE_ID },
-    about: { "@id": BUSINESS_ID },
-    publisher: { "@id": BUSINESS_ID },
+    isPartOf: { "@id": website },
+    about: { "@id": business },
+    publisher: { "@id": business },
   }
 }
 
-export function reviewSchema() {
-  return homepageTestimonials.slice(0, 3).map((testimonial) => ({
+export function reviewSchema(site: Site, testimonials: Testimonial[]) {
+  const { business } = ids(site)
+  return testimonials.slice(0, 3).map((testimonial) => ({
     "@type": "Review",
     author: {
       "@type": "Person",
@@ -213,13 +230,15 @@ export function reviewSchema() {
       bestRating: 5,
       worstRating: 1,
     },
-    itemReviewed: { "@id": BUSINESS_ID },
+    itemReviewed: { "@id": business },
   }))
 }
 
 export function offerCatalogSchema(
+  site: Site,
   offers: { name: string; price: string; description?: string }[],
 ) {
+  const { business } = ids(site)
   return {
     "@type": "OfferCatalog",
     name: `${site.name} Services`,
@@ -229,26 +248,28 @@ export function offerCatalogSchema(
       price: offer.price.replace(/[^0-9.]/g, "") || undefined,
       priceCurrency: "USD",
       description: offer.description,
-      seller: { "@id": BUSINESS_ID },
+      seller: { "@id": business },
       areaServed: site.serviceAreas,
     })),
   }
 }
 
 export function locationPageSchema(
+  site: Site,
   locationName: string,
   title: string,
   description: string,
   url: string,
 ) {
+  const { website, business } = ids(site)
   return {
     "@type": "WebPage",
     name: title,
     description,
     url,
     inLanguage: "en-US",
-    isPartOf: { "@id": WEBSITE_ID },
-    about: { "@id": BUSINESS_ID },
+    isPartOf: { "@id": website },
+    about: { "@id": business },
     contentLocation: {
       "@type": "Place",
       name: locationName,
@@ -259,7 +280,7 @@ export function locationPageSchema(
         addressCountry: "US",
       },
     },
-    mentions: { "@id": BUSINESS_ID },
+    mentions: { "@id": business },
   }
 }
 
@@ -268,10 +289,6 @@ export function graphSchema(nodes: object[]) {
     "@context": "https://schema.org",
     "@graph": nodes,
   }
-}
-
-function absoluteImage(path: string) {
-  return path.startsWith("http") ? path : `${site.url}${path}`
 }
 
 function flattenSchema(data: object): object[] {
@@ -302,4 +319,11 @@ export function JsonLd({ data }: { data: object }) {
       ))}
     </>
   )
+}
+
+export function createSchemaContext(
+  site: Site,
+  options?: { services?: ServicePage[]; testimonials?: Testimonial[] },
+): SchemaContext {
+  return { site, services: options?.services, testimonials: options?.testimonials }
 }

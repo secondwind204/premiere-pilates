@@ -1,10 +1,12 @@
 import { FaqSection } from "@/components/faq-section"
-import { homepageFaqs } from "@/lib/content/homepage"
+import { getHomepage } from "@/lib/sanity/fetch"
 
-export function FAQ() {
+export async function FAQ() {
+  const { faqs } = await getHomepage()
+
   return (
     <FaqSection
-      faqs={homepageFaqs}
+      faqs={faqs}
       title="Questions & Answers"
       subtitle="FAQ"
       id="faq"

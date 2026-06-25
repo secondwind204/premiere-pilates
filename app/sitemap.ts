@@ -1,10 +1,14 @@
 import type { MetadataRoute } from "next"
-import { locations } from "@/lib/content/locations"
-import { getStartedPaths } from "@/lib/content/offerings"
-import { services } from "@/lib/content/services"
-import { site } from "@/lib/content/site"
+import { getGetStartedPaths, getLocations, getServices, getSite } from "@/lib/sanity/fetch"
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [site, services, locations, getStartedPaths] = await Promise.all([
+    getSite(),
+    getServices(),
+    getLocations(),
+    getGetStartedPaths(),
+  ])
+
   const servicePages = services.map((service) => ({
     url: `${site.url}/services/${service.slug}`,
     lastModified: new Date(site.lastReviewed),

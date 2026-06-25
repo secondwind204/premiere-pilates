@@ -1,16 +1,17 @@
 import type { Testimonial } from "@/lib/content/services"
-import { site } from "@/lib/content/site"
+import type { Site } from "@/lib/content/site"
 import { Quote, Star } from "lucide-react"
 
 type TestimonialsSectionProps = {
   testimonials: Testimonial[]
+  site: Site
   title?: string
   subtitle?: string
   className?: string
   featured?: boolean
 }
 
-function StarRating({ className = "" }: { className?: string }) {
+function StarRating({ site, className = "" }: { site: Site; className?: string }) {
   return (
     <div className={`flex gap-0.5 ${className}`} aria-label={`${site.googleReviews.ratingDisplay} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
@@ -22,6 +23,7 @@ function StarRating({ className = "" }: { className?: string }) {
 
 export function TestimonialsSection({
   testimonials,
+  site,
   title = "What Our Clients Say",
   subtitle = "Success Stories",
   className = "",
@@ -44,7 +46,7 @@ export function TestimonialsSection({
               className="absolute top-6 right-6 md:top-8 md:right-8 w-16 h-16 md:w-20 md:h-20 text-primary/10"
               strokeWidth={1}
             />
-            <StarRating className="mb-6" />
+            <StarRating site={site} className="mb-6" />
             <p className="relative text-xl md:text-2xl lg:text-[1.75rem] font-medium leading-relaxed text-foreground max-w-4xl text-balance">
               &ldquo;{featuredTestimonial.quote}&rdquo;
             </p>
@@ -61,7 +63,7 @@ export function TestimonialsSection({
               className="relative flex flex-col justify-between rounded-2xl border border-border/80 bg-secondary/55 p-8 shadow-[0_4px_20px_-6px_rgba(80,50,120,0.12)] hover:shadow-[0_8px_28px_-6px_rgba(80,50,120,0.18)] hover:border-primary/20 transition-all duration-300"
             >
               <div>
-                <StarRating className="mb-5" />
+                <StarRating site={site} className="mb-5" />
                 <p className="text-base md:text-lg leading-relaxed text-foreground">&ldquo;{testimonial.quote}&rdquo;</p>
               </div>
               <footer className="mt-6 text-sm font-medium text-muted-foreground">— {testimonial.author}</footer>

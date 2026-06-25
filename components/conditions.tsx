@@ -10,7 +10,7 @@ import {
   Traumatism,
   Woman,
 } from "healthicons-react/outline"
-import { conditionCards } from "@/lib/content/services"
+import { getConditionCards } from "@/lib/sanity/fetch"
 
 const iconMap = {
   stitches: Stitches,
@@ -23,7 +23,9 @@ const iconMap = {
   painManagement: PainManagment,
 } as const
 
-export function Conditions() {
+export async function Conditions() {
+  const conditionCards = await getConditionCards()
+
   return (
     <section id="services" className="py-20 md:py-28 bg-secondary/45">
       <div className="container mx-auto px-6 md:px-12">

@@ -1,9 +1,8 @@
 import Link from "next/link"
 import { ArrowRight, Check, MapPin, Phone } from "lucide-react"
 import type { LocationPage } from "@/lib/content/locations"
-import { practiceFacts } from "@/lib/content/geo-facts"
-import { conditionCards } from "@/lib/content/services"
-import { site } from "@/lib/content/site"
+import { buildPracticeFacts } from "@/lib/content/geo-facts"
+import { getConditionCards, getContent } from "@/lib/sanity/fetch"
 import { primaryCtaClass, primaryCtaInvertedClass } from "@/lib/cta-styles"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -12,6 +11,7 @@ import { CtaSection } from "@/components/cta-section"
 import {
   JsonLd,
   breadcrumbSchema,
+  createSchemaContext,
   faqSchema,
   graphSchema,
   localBusinessSchema,
@@ -20,17 +20,23 @@ import {
   websiteSchema,
 } from "@/lib/schema"
 
-export function LocationPageLayout({ location }: { location: LocationPage }) {
+export async function LocationPageLayout({ location }: { location: LocationPage }) {
+  const [{ site, services, locations }, conditionCards] = await Promise.all([
+    getContent(),
+    getConditionCards(),
+  ])
+  const practiceFacts = buildPracticeFacts(site, services, locations)
+  const schemaCtx = createSchemaContext(site)
   const pageUrl = `${site.url}/locations/${location.slug}`
 
   return (
     <>
       <JsonLd
         data={graphSchema([
-          websiteSchema(),
-          localBusinessSchema(),
-          personSchema(),
-          locationPageSchema(location.name, location.title, location.metaDescription, pageUrl),
+          websiteSchema(schemaCtx),
+          localBusinessSchema(schemaCtx),
+          personSchema(schemaCtx),
+          locationPageSchema(site, location.name, location.title, location.metaDescription, pageUrl),
           breadcrumbSchema([
             { name: "Home", url: site.url },
             { name: location.name, url: pageUrl },

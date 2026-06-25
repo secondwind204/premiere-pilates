@@ -1,5 +1,5 @@
 import { CtaSection } from "@/components/cta-section"
 
-export function CallToAction() {
+export async function CallToAction() {
   return <CtaSection className="scroll-mt-24" />
 }

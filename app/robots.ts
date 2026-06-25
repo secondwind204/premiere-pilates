@@ -1,7 +1,9 @@
 import type { MetadataRoute } from "next"
-import { site } from "@/lib/content/site"
+import { getSite } from "@/lib/sanity/fetch"
 
-export default function robots(): MetadataRoute.Robots {
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const site = await getSite()
+
   return {
     rules: [
       {

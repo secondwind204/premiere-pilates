@@ -1,10 +1,11 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
-import { aboutNicoleSummary } from "@/lib/content/homepage"
-import { site } from "@/lib/content/site"
+import { getHomepage, getSite } from "@/lib/sanity/fetch"
 
-export function AboutPreview() {
+export async function AboutPreview() {
+  const { aboutNicoleSummary } = await getHomepage()
+
   return (
     <section className="py-20 md:py-28 bg-secondary/45">
       <div className="container mx-auto px-6 md:px-12">
@@ -44,7 +45,9 @@ export function AboutPreview() {
   )
 }
 
-export function SocialProof() {
+export async function SocialProof() {
+  const site = await getSite()
+
   return (
     <section className="py-12 border-y border-border bg-background">
       <div className="container mx-auto px-6 md:px-12 text-center">
