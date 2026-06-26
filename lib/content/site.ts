@@ -5,7 +5,7 @@ export const site = {
   brandLine2: "Rehabilitation and Fitness",
   tagline: "One-on-One Physical Therapy & Pilates Rehabilitation",
   description:
-    "Private, one-on-one physical therapy and Pilates rehabilitation in St. Augustine, FL. Nicole Tristram, PT offers manual therapy, Alpha-Stim, Dolphin Neurostim, and studio equipment including Reformer, Oov, and Konnector for post-surgical recovery, foot and ankle pain, chronic pain, sports injuries, and women's health.",
+    "Private, one-on-one physical therapy and Pilates rehabilitation in St. Augustine, FL. Nicole Tristram, PT offers personalized care for post-surgical recovery, foot and ankle pain, chronic pain, sports injuries, and women's health.",
   url: "https://premierepilates.org",
   locale: "en_US",
   phone: "(904) 315-0667",
