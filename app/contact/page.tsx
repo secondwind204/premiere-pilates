@@ -71,7 +71,7 @@ export default async function ContactPage() {
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-6 md:px-12">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-              <address className="not-italic">
+              <address className="not-italic order-2 lg:order-1">
                 <h2 className="text-2xl font-medium mb-2">{site.owner.name}</h2>
                 <p className="text-primary font-medium mb-8">{site.owner.title}</p>
 
@@ -178,7 +178,7 @@ export default async function ContactPage() {
                 </div>
               </address>
 
-              <div className="bg-card border border-border rounded-2xl p-8">
+              <div className="bg-card border border-border rounded-2xl p-8 order-1 lg:order-2">
                 <h2 className="text-xl font-medium mb-2">Send a message</h2>
                 <p className="text-muted-foreground text-sm mb-8">
                   Fill out the form below and Nicole will get back to you shortly.
