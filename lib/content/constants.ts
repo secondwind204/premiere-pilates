@@ -12,7 +12,16 @@ export const SITE_CONSTANTS = {
     latitude: 29.8947,
     longitude: -81.3145,
   },
-  sameAs: ["https://maps.app.goo.gl/EjW6y4F4pVxTp2jV7"],
+  social: {
+    instagram: "https://www.instagram.com/premierepilates/",
+    facebook: "https://www.facebook.com/nicole.c.tristram/",
+    googleBusiness: "https://maps.app.goo.gl/EjW6y4F4pVxTp2jV7",
+  },
+  sameAs: [
+    "https://www.instagram.com/premierepilates/",
+    "https://www.facebook.com/nicole.c.tristram/",
+    "https://maps.app.goo.gl/EjW6y4F4pVxTp2jV7",
+  ],
   hours: [
     { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "18:00" },
   ],
@@ -24,6 +33,8 @@ export const SITE_CONSTANTS = {
     "Dolphin Neurostim",
     "Post-Surgical Rehabilitation",
     "Chronic Pain Management",
+    "Ehlers-Danlos Syndrome (EDS)",
+    "Joint Hypermobility",
     "Sports Injury Rehabilitation",
     "Women's Health Physical Therapy",
     "Hip and Back Pain",
@@ -50,7 +61,6 @@ export const FORM_CATEGORIES = [
   { id: "fitness", label: "Fitness & Wellness" },
   { id: "physical-therapy", label: "Physical Therapy Patients" },
   { id: "pediatric", label: "Pediatric Patients" },
-  { id: "functional-scale", label: "Functional Scales" },
   { id: "class", label: "Class Registration" },
 ] as const
 
@@ -100,7 +110,7 @@ export const CONDITION_CARD_CONFIG = [
   {
     slug: "chronic-pain",
     title: "Chronic Pain Management",
-    conditions: ["Persistent pain", "Sciatica", "Fascial restrictions", "Post-injury pain"],
+    conditions: ["Ehlers-Danlos (EDS)", "Persistent pain", "Sciatica", "Joint hypermobility"],
     icon: "painManagement",
   },
 ] as const

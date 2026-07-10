@@ -69,6 +69,7 @@ export const physicalTherapyOffering: OfferingPage = {
       "Breast cancer recovery",
       "Extremity lymphedema",
       "Fibromyalgia",
+      "Ehlers-Danlos syndrome (EDS) and joint hypermobility",
       "Osteoporosis",
       "Pediatric physical therapy",
       "Neurological rehabilitation",
@@ -166,7 +167,7 @@ export const getStartedPaths = [
   },
   {
     title: "Patient Forms",
-    description: "Download intake forms, functional scales, and registration paperwork.",
+    description: "Download intake forms and registration paperwork.",
     href: "/get-started/forms",
   },
 ] as const

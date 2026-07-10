@@ -19,7 +19,7 @@ export async function AreasServed() {
           </p>
         </div>
 
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
           {locationLinks.map((location) => (
             <li key={location.href}>
               <Link

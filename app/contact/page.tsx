@@ -14,7 +14,7 @@ import {
 } from "@/lib/schema"
 import { createMetadata } from "@/lib/seo"
 import { getSite } from "@/lib/sanity/fetch"
-import { MapPin, Phone, Mail, Printer, Clock } from "lucide-react"
+import { MapPin, Phone, Mail, Printer, Clock, Instagram, Facebook } from "lucide-react"
 
 export async function generateMetadata(): Promise<Metadata> {
   const site = await getSite()
@@ -127,6 +127,45 @@ export default async function ContactPage() {
                     </div>
                   </li>
                 </ul>
+
+                <div className="mb-10">
+                  <p className="font-medium mb-3">Follow & find us</p>
+                  <ul className="flex flex-wrap gap-4 text-sm">
+                    <li>
+                      <a
+                        href={site.social.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <Instagram className="w-4 h-4" aria-hidden="true" />
+                        Instagram
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={site.social.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <Facebook className="w-4 h-4" aria-hidden="true" />
+                        Facebook
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={site.social.googleBusiness}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <MapPin className="w-4 h-4" aria-hidden="true" />
+                        Google Business Profile
+                      </a>
+                    </li>
+                  </ul>
+                </div>
 
                 <div className="aspect-video rounded-2xl overflow-hidden bg-secondary border border-border">
                   <iframe

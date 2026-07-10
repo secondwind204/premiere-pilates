@@ -538,16 +538,17 @@ export const services: ServicePage[] = [
     slug: "chronic-pain",
     title: "Chronic Pain Physical Therapy in St. Augustine",
     metaDescription:
-      "Chronic pain physical therapy in St. Augustine. Whole-body approach to persistent back, hip, neck, and shoulder pain that hasn't responded to other treatment.",
+      "Chronic pain and Ehlers-Danlos syndrome (EDS) physical therapy in St. Augustine. Whole-body approach to persistent pain, joint hypermobility, and conditions that haven't responded to other treatment.",
     headline: "Chronic Pain Physical Therapy in St. Augustine",
     subheadline:
-      "Persistent pain that hasn't responded to other treatment? A whole-body approach to find the source and restore function.",
+      "Persistent pain, joint hypermobility, or Ehlers-Danlos syndrome (EDS)? A whole-body approach to find the source and restore function.",
     whyItMatters:
-      "Chronic pain rarely has a single, obvious cause — it's usually a web of compensations, fascial restrictions, and movement patterns built up over time. Treating symptoms alone brings only temporary relief. Nicole maps the whole picture and addresses the underlying drivers.",
+      "Chronic pain rarely has a single, obvious cause — it's usually a web of compensations, fascial restrictions, and movement patterns built up over time. For people with Ehlers-Danlos syndrome (EDS) and joint hypermobility, unstable joints and connective tissue differences need a careful, individualized approach. Treating symptoms alone brings only temporary relief. Nicole maps the whole picture and addresses the underlying drivers.",
     whatWeTreat: [
       {
         category: "Conditions we treat",
         items: [
+          "Ehlers-Danlos syndrome (EDS) and joint hypermobility",
           "Persistent back, hip, neck, and shoulder pain",
           "Sciatica and nerve-related pain",
           "Fascial restrictions and chronic muscle tension",
@@ -583,6 +584,11 @@ export const services: ServicePage[] = [
         question: "I've tried everything — how is this different?",
         answer:
           "Nicole assesses the whole body to find compensations and root causes that single-area treatment misses.",
+      },
+      {
+        question: "Do you treat Ehlers-Danlos syndrome (EDS)?",
+        answer:
+          "Yes. Nicole works with clients who have Ehlers-Danlos syndrome (EDS) and joint hypermobility, using private one-on-one physical therapy and Pilates-based stabilization to improve joint control, reduce pain, and build safer movement patterns.",
       },
       {
         question: "Can PT reduce my reliance on pain medication?",
@@ -960,7 +966,7 @@ export const conditionCards = [
   },
   {
     title: "Chronic Pain Management",
-    conditions: ["Persistent pain", "Sciatica", "Fascial restrictions", "Post-injury pain"],
+    conditions: ["Ehlers-Danlos (EDS)", "Persistent pain", "Sciatica", "Joint hypermobility"],
     href: "/services/chronic-pain",
     icon: "painManagement",
   },

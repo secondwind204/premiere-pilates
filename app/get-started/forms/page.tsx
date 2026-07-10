@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return createMetadata({
     title: "Patient Forms",
     description:
-      "Download patient intake forms, medical history questionnaires, and functional scales for Premiere Pilates Rehabilitation and Fitness in St. Augustine, FL.",
+      "Download patient intake forms and medical history questionnaires for Premiere Pilates Rehabilitation and Fitness in St. Augustine, FL.",
     path: "/get-started/forms",
     site,
   })
@@ -43,7 +43,7 @@ export default async function GetStartedFormsPage() {
         data={graphSchema([
           websiteSchema(schemaCtx),
           localBusinessSchema(schemaCtx),
-          webPageSchema(site, "Patient Forms", "Download intake forms and functional scales for Premiere Pilates in St. Augustine, FL.", pageUrl),
+          webPageSchema(site, "Patient Forms", "Download intake forms for Premiere Pilates in St. Augustine, FL.", pageUrl),
           breadcrumbSchema([
             { name: "Home", url: site.url },
             { name: "Get Started", url: `${site.url}/get-started` },

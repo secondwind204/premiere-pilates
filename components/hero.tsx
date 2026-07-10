@@ -32,14 +32,19 @@ export async function Hero() {
 
             <div className="flex flex-wrap items-center gap-x-2.5 sm:gap-x-3 gap-y-2 mb-10 text-xs sm:text-sm">
               <div className="flex items-center gap-1.5 min-w-0">
-                <div className="flex shrink-0">
+                <div className="flex shrink-0" aria-hidden="true">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star key={i} className="w-3.5 h-3.5 fill-primary text-primary" />
                   ))}
                 </div>
-                <span className="font-medium text-foreground/80">
+                <a
+                  href={site.googleReviews.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-foreground/80 hover:text-foreground underline-offset-4 hover:underline transition-colors"
+                >
                   {site.googleReviews.ratingDisplay} Stars ({site.googleReviews.count} Google Reviews)
-                </span>
+                </a>
               </div>
 
               <span className="text-muted-foreground/50" aria-hidden="true">

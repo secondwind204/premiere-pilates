@@ -6,6 +6,7 @@ export const localGeoKeywords = [
   "St Johns County FL",
   "Ponte Vedra FL",
   "Jacksonville FL",
+  "Palm Coast FL",
   "Northeast Florida",
 ] as const
 
@@ -16,7 +17,13 @@ export const serviceSeoKeywords: Record<string, string[]> = {
   "knee-rehabilitation": ["knee pain physical therapy", "ACL rehabilitation"],
   "shoulder-injury": ["shoulder pain physical therapy", "rotator cuff rehabilitation", "frozen shoulder treatment"],
   "sports-injury": ["sports injury physical therapy", "return to sport rehabilitation"],
-  "chronic-pain": ["chronic pain physical therapy", "pain management physical therapy"],
+  "chronic-pain": [
+    "chronic pain physical therapy",
+    "pain management physical therapy",
+    "Ehlers-Danlos syndrome physical therapy",
+    "EDS physical therapy St Augustine",
+    "joint hypermobility physical therapy",
+  ],
   "foot-ankle": ["plantar fasciitis treatment", "ankle sprain rehabilitation", "foot and ankle physical therapy"],
   oov: ["Oov rehabilitation", "Oov physical therapy", "Polestar Pilates rehabilitation"],
   konnector: ["Konnector Pilates", "Konnector Reformer training", "proprioception rehabilitation"],

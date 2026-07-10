@@ -3,7 +3,7 @@ import type { ServicePage } from "@/lib/content/services"
 import type { Site } from "@/lib/content/site"
 
 export const locationServicesBlurb =
-  "Treatment includes manual therapy techniques and modalities (Alpha-Stim and Dolphin Neurostim), plus Pilates rehabilitation on Reformer, Cadillac, Wunda Chair, Spine Corrector, Oov, and Konnector equipment. Conditions treated include post-surgical recovery, hip and back pain, knee and shoulder injuries, foot and ankle pain (plantar fasciitis, ankle sprains, Achilles tendinopathy), sports injuries, chronic pain, and women's health physical therapy."
+  "Treatment includes manual therapy techniques and modalities (Alpha-Stim and Dolphin Neurostim), plus Pilates rehabilitation on Reformer, Cadillac, Wunda Chair, Spine Corrector, Oov, and Konnector equipment. Conditions treated include post-surgical recovery, hip and back pain, knee and shoulder injuries, foot and ankle pain (plantar fasciitis, ankle sprains, Achilles tendinopathy), sports injuries, chronic pain, Ehlers-Danlos syndrome (EDS), joint hypermobility, and women's health physical therapy."
 
 export const sharedLocationFaqs = [
   {

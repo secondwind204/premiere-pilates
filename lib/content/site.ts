@@ -5,7 +5,7 @@ export const site = {
   brandLine2: "Rehabilitation and Fitness",
   tagline: "One-on-One Physical Therapy & Pilates Rehabilitation",
   description:
-    "Private, one-on-one physical therapy and Pilates rehabilitation in St. Augustine, FL. Nicole Tristram, PT offers personalized care for post-surgical recovery, foot and ankle pain, chronic pain, sports injuries, and women's health.",
+    "Private, one-on-one physical therapy and Pilates rehabilitation in St. Augustine, FL. Nicole Tristram, PT offers personalized care for post-surgical recovery, foot and ankle pain, chronic pain, Ehlers-Danlos syndrome (EDS), sports injuries, and women's health.",
   url: "https://premierepilates.org",
   locale: "en_US",
   phone: "(904) 315-0667",
@@ -25,14 +25,23 @@ export const site = {
     longitude: -81.3145,
   },
   mapsUrl: "https://maps.app.goo.gl/EjW6y4F4pVxTp2jV7",
-  serviceAreas: ["St. Augustine", "Ponte Vedra", "Jacksonville", "St. Johns County"],
+  serviceAreas: ["St. Augustine", "Ponte Vedra", "Jacksonville", "St. Johns County", "Palm Coast"],
   googleReviews: {
     rating: 5.0,
     ratingDisplay: "5.0",
     count: 56,
     url: "https://maps.app.goo.gl/EjW6y4F4pVxTp2jV7",
   },
-  sameAs: ["https://maps.app.goo.gl/EjW6y4F4pVxTp2jV7"],
+  social: {
+    instagram: "https://www.instagram.com/premierepilates/",
+    facebook: "https://www.facebook.com/nicole.c.tristram/",
+    googleBusiness: "https://maps.app.goo.gl/EjW6y4F4pVxTp2jV7",
+  },
+  sameAs: [
+    "https://www.instagram.com/premierepilates/",
+    "https://www.facebook.com/nicole.c.tristram/",
+    "https://maps.app.goo.gl/EjW6y4F4pVxTp2jV7",
+  ],
   scheduleUrl: "/contact",
   ogImage: "/images/unnamed%20(1).webp",
   logo: "/images/premierepilateslogo.png",
@@ -49,6 +58,8 @@ export const site = {
     "Dolphin Neurostim",
     "Post-Surgical Rehabilitation",
     "Chronic Pain Management",
+    "Ehlers-Danlos Syndrome (EDS)",
+    "Joint Hypermobility",
     "Sports Injury Rehabilitation",
     "Women's Health Physical Therapy",
     "Hip and Back Pain",
@@ -103,6 +114,11 @@ export type Site = {
     ratingDisplay: string
     count: number
     url: string
+  }
+  social: {
+    instagram: string
+    facebook: string
+    googleBusiness: string
   }
   sameAs: readonly string[]
   scheduleUrl: string
@@ -167,6 +183,7 @@ export const locationLinks = [
   { label: "Ponte Vedra", href: "/locations/ponte-vedra" },
   { label: "Jacksonville", href: "/locations/jacksonville" },
   { label: "St. Johns County", href: "/locations/st-johns-county" },
+  { label: "Palm Coast", href: "/locations/palm-coast" },
 ] as const
 
 export const differentiators = [

@@ -243,7 +243,7 @@ export function buildGetStartedPaths(offerings: OfferingPage[]) {
     ...offeringCards,
     {
       title: "Patient Forms",
-      description: "Download intake forms, functional scales, and registration paperwork.",
+      description: "Download intake forms and registration paperwork.",
       href: "/get-started/forms",
     },
   ]

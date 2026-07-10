@@ -36,7 +36,7 @@ export const locations: LocationPage[] = [
       "Oov and Konnector Pilates integrated into rehabilitation",
       "Manual therapy, Alpha-Stim, and Dolphin Neurostim",
       "Direct-access physical therapy — no referral required in Florida",
-      "Cash-pay with superbills; Florida Medicare provider",
+      "Cash-pay with superbills available for reimbursement",
     ],
     nearbyAreas: ["Vilano Beach", "World Golf Village", "Nocatee", "St. Augustine South"],
     faqs: [
@@ -53,7 +53,7 @@ export const locations: LocationPage[] = [
       {
         question: "What conditions do you treat in St. Augustine?",
         answer:
-          "Post-surgical rehabilitation, hip and back pain, knee and shoulder injuries, foot and ankle conditions (plantar fasciitis, ankle sprains), sports injuries, chronic pain, women's health conditions, and Pilates-based wellness — using manual therapy, Alpha-Stim, Dolphin Neurostim, and studio equipment including Oov and Konnector.",
+          "Post-surgical rehabilitation, hip and back pain, knee and shoulder injuries, foot and ankle conditions (plantar fasciitis, ankle sprains), sports injuries, chronic pain, Ehlers-Danlos syndrome (EDS), women's health conditions, and Pilates-based wellness — using manual therapy, Alpha-Stim, Dolphin Neurostim, and studio equipment including Oov and Konnector.",
       },
       ...sharedLocationFaqs,
     ],
@@ -123,7 +123,7 @@ export const locations: LocationPage[] = [
       "Manual therapy, Alpha-Stim, and Dolphin Neurostim",
       "PT + Pilates combination for whole-body recovery",
       "Direct-access care — schedule without a referral",
-      "Medicare provider; superbills available for reimbursement",
+      "Cash-pay with superbills available for reimbursement",
     ],
     nearbyAreas: ["Southside Jacksonville", "Mandarin", "Jacksonville Beach", "San Marco"],
     faqs: [
@@ -166,7 +166,7 @@ export const locations: LocationPage[] = [
       "Oov and Konnector Pilates rehabilitation",
       "Manual therapy, Alpha-Stim, Dolphin Neurostim, and Pilates rehabilitation",
       "Post-surgical, chronic pain, sports, and women's health",
-      "Cash-pay, Medicare, and superbill options",
+      "Cash-pay with superbills available for reimbursement",
     ],
     nearbyAreas: ["Nocatee", "Fruit Cove", "Julington Creek", "Hastings"],
     faqs: [
@@ -176,14 +176,53 @@ export const locations: LocationPage[] = [
           "Premiere Pilates Rehabilitation and Fitness serves patients throughout St. Johns County including St. Augustine, Ponte Vedra, Ponte Vedra Beach, Nocatee, and surrounding communities from the studio at 4057 Seminole Point Court.",
       },
       {
-        question: "Is Premiere Pilates a Medicare provider in St. Johns County?",
-        answer:
-          "Yes. Premiere Pilates Rehabilitation and Fitness is a Florida Medicare provider and also accepts major insurance plans. Cash-pay with superbills is available for out-of-network reimbursement.",
-      },
-      {
         question: "How do I start physical therapy in St. Johns County?",
         answer:
           "Schedule your initial evaluation by calling (904) 315-0667. Florida direct-access allows you to begin without a physician referral.",
+      },
+      ...sharedLocationFaqs,
+    ],
+  },
+  {
+    slug: "palm-coast",
+    name: "Palm Coast",
+    title: "Physical Therapy Near Palm Coast, FL",
+    metaDescription:
+      "Private physical therapy and Pilates rehabilitation serving Palm Coast, FL. Manual therapy, foot and ankle rehab, Oov, Konnector, Alpha-Stim, and Dolphin Neurostim with Nicole Tristram, PT.",
+    headline: "Physical Therapy Serving Palm Coast, FL",
+    subheadline:
+      "Premiere Pilates Rehabilitation and Fitness in nearby St. Augustine provides private, one-on-one physical therapy and Pilates for Palm Coast residents seeking personalized rehabilitation.",
+    intro: [
+      "Palm Coast residents looking for private, one-on-one physical therapy often travel to St. Augustine for care that high-volume clinics can't match. At Premiere Pilates Rehabilitation and Fitness, every session is dedicated entirely to you.",
+      "Nicole Tristram, PT combines 25+ years of physical therapy experience with Pilates rehabilitation — including manual therapy, Alpha-Stim, Dolphin Neurostim, Oov, and Konnector training — to help Palm Coast patients recover from surgery, resolve chronic pain, and return to the activities they love.",
+      locationServicesBlurb,
+    ],
+    highlights: [
+      "Convenient drive from Palm Coast to our St. Augustine studio",
+      "Private one-on-one sessions — full hour with Nicole every time",
+      "Post-surgical, chronic pain, and sports rehabilitation",
+      "Foot and ankle PT: plantar fasciitis, ankle sprains, heel pain",
+      "Oov and Konnector integrated into rehabilitation",
+      "Manual therapy, Alpha-Stim, and Dolphin Neurostim",
+      "Direct-access care — schedule without a referral",
+      "Cash-pay with superbills available for reimbursement",
+    ],
+    nearbyAreas: ["Flagler Beach", "Bunnell", "Ormond Beach", "St. Augustine"],
+    faqs: [
+      {
+        question: "How far is Premiere Pilates from Palm Coast?",
+        answer:
+          "The studio at 4057 Seminole Point Court in St. Augustine is a short drive from Palm Coast — convenient for private one-on-one physical therapy and Pilates appointments.",
+      },
+      {
+        question: "Do you treat Palm Coast patients for post-surgical and chronic pain?",
+        answer:
+          "Yes. Nicole treats post-surgical rehabilitation, chronic pain, sports injuries, foot and ankle conditions, women's health, and more — using manual therapy, modalities, and Pilates-based movement retraining.",
+      },
+      {
+        question: "Can I schedule a physical therapy evaluation from Palm Coast?",
+        answer:
+          "Yes. Call (904) 315-0667 or schedule online. Florida direct-access allows you to begin physical therapy without a physician referral.",
       },
       ...sharedLocationFaqs,
     ],

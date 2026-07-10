@@ -1,6 +1,6 @@
 import { getLayoutData } from "@/lib/sanity/fetch"
 import Link from "next/link"
-import { Phone, Star } from "lucide-react"
+import { Facebook, Instagram, Phone, Star } from "lucide-react"
 
 export async function Footer() {
   const { site, navLinks, locationLinks } = await getLayoutData()
@@ -31,7 +31,7 @@ export async function Footer() {
                 {site.email}
               </a>
             </address>
-            <div className="flex items-center gap-2 text-sm">
+            <div className="flex items-center gap-2 text-sm mb-4">
               <div className="flex" aria-hidden="true">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-primary text-primary" />
@@ -41,6 +41,40 @@ export async function Footer() {
                 {site.googleReviews.ratingDisplay} Stars ({site.googleReviews.count} Google Reviews)
               </span>
             </div>
+            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
+              <li>
+                <a
+                  href={site.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 hover:text-foreground transition-colors"
+                >
+                  <Instagram className="w-4 h-4" aria-hidden="true" />
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 hover:text-foreground transition-colors"
+                >
+                  <Facebook className="w-4 h-4" aria-hidden="true" />
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.social.googleBusiness}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors"
+                >
+                  Google Business Profile
+                </a>
+              </li>
+            </ul>
           </div>
 
           <div>

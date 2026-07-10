@@ -15,7 +15,6 @@ export const patientForm = defineType({
           { title: "Fitness & Wellness", value: "fitness" },
           { title: "Physical Therapy", value: "physical-therapy" },
           { title: "Pediatric", value: "pediatric" },
-          { title: "Functional Scale", value: "functional-scale" },
           { title: "Class Registration", value: "class" },
         ],
       },
