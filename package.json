@@ -11,7 +11,8 @@
     "studio:deploy": "npm run deploy --prefix studio",
     "seed:sanity": "tsx scripts/seed-sanity.ts",
     "seed:sanity:cli": "tsx scripts/seed-sanity-cli.ts",
-    "seed:verify": "tsx scripts/verify-sanity.ts"
+    "seed:verify": "tsx scripts/verify-sanity.ts",
+    "indexnow": "tsx scripts/indexnow.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
